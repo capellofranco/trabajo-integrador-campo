@@ -11,6 +11,8 @@ namespace DAL
 {
     public class ACCESO
     {
+
+        //vPEPEPEPEPe
         private SqlConnection conexion;
         private SqlTransaction transaccion;
 
