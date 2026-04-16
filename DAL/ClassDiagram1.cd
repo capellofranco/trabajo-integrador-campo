@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DAL.ACCESO">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAgACAAAQAAAAgAAAQAAAAAAABAAAABAIAAACAAAAAE=</HashCode>
+      <FileName>ACCESO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.MAPPER&lt;T&gt;">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQEQAAAAACAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MAPPER.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.MP_USUARIO">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEQAAAAACAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MP_USUARIO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
