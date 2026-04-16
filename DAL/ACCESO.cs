@@ -13,6 +13,7 @@ namespace DAL
     {
 
         //vPEPEPEPEPe
+        //hdjashdjkahskj
         private SqlConnection conexion;
         private SqlTransaction transaccion;
 
