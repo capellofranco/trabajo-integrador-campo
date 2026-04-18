@@ -11,3 +11,16 @@ C:\Users\capel\OneDrive\Escritorio\facultad\campo\trabajo integrador campo\BLL\o
 C:\Users\capel\OneDrive\Escritorio\facultad\campo\trabajo integrador campo\BLL\obj\Debug\BLL.csproj.Up2Date
 C:\Users\capel\OneDrive\Escritorio\facultad\campo\trabajo integrador campo\BLL\obj\Debug\BLL.dll
 C:\Users\capel\OneDrive\Escritorio\facultad\campo\trabajo integrador campo\BLL\obj\Debug\BLL.pdb
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\BLL\bin\Debug\BLL.dll
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\BLL\bin\Debug\BLL.pdb
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\BLL\bin\Debug\BE.dll
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\BLL\bin\Debug\DAL.dll
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\BLL\bin\Debug\SEC.dll
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\BLL\bin\Debug\BE.pdb
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\BLL\bin\Debug\DAL.pdb
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\BLL\bin\Debug\SEC.pdb
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\BLL\obj\Debug\BLL.csproj.Up2Date
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\BLL\obj\Debug\BLL.dll
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\BLL\obj\Debug\BLL.pdb

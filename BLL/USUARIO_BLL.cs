@@ -15,7 +15,8 @@ namespace BLL
 
         public bool Login(string nom, string pass)
         {
-            USUARIO usuario =mapper.Login(nom, pass);
+            string passwordHasheada = HashHelper.GenerarHash(pass);
+            USUARIO usuario =mapper.Login(nom, passwordHasheada);
 
             if(usuario != null)
             {
@@ -25,11 +26,16 @@ namespace BLL
 
             return false;
         }
-         public void Logout()
+        public void Logout()
         {
-            SESSION_MANAGER.Logout();
+           SESSION_MANAGER.Logout();
         }
 
+        public int RegistrarUsuario(USUARIO nuevoUsuario)
+        {
+            nuevoUsuario.Password = HashHelper.GenerarHash(nuevoUsuario.Password);
+            return mapper.Insertar(nuevoUsuario);
+        }
 
     }
 }

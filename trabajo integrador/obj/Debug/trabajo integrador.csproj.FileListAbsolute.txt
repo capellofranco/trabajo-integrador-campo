@@ -19,3 +19,24 @@ C:\Users\capel\OneDrive\Escritorio\facultad\campo\trabajo integrador campo\traba
 C:\Users\capel\OneDrive\Escritorio\facultad\campo\trabajo integrador campo\trabajo integrador\obj\Debug\trabajo integrador.exe
 C:\Users\capel\OneDrive\Escritorio\facultad\campo\trabajo integrador campo\trabajo integrador\obj\Debug\trabajo integrador.pdb
 C:\Users\capel\OneDrive\Escritorio\facultad\campo\trabajo integrador campo\trabajo integrador\obj\Debug\trabajo integrador.exe.config
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\bin\Debug\trabajo integrador.exe.config
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\bin\Debug\trabajo integrador.exe
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\bin\Debug\trabajo integrador.pdb
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\bin\Debug\BE.dll
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\bin\Debug\BLL.dll
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\bin\Debug\DAL.dll
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\bin\Debug\SEC.dll
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\bin\Debug\BE.pdb
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\bin\Debug\BLL.pdb
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\bin\Debug\DAL.pdb
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\bin\Debug\SEC.pdb
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\obj\Debug\trabajo integrador.csproj.AssemblyReference.cache
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\obj\Debug\trabajo integrador.exe.config
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\obj\Debug\trabajo_integrador.InterfazGeneral.resources
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\obj\Debug\trabajo_integrador.Login.resources
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\obj\Debug\trabajo_integrador.Properties.Resources.resources
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\obj\Debug\trabajo integrador.csproj.GenerateResource.cache
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\obj\Debug\trabajo integrador.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\obj\Debug\trabajo .F3D94075.Up2Date
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\obj\Debug\trabajo integrador.exe
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\obj\Debug\trabajo integrador.pdb
