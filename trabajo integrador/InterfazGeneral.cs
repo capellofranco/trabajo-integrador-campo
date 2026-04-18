@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace trabajo_integrador
 {
-    public partial class Form1 : Form
+    public partial class InterfazGeneral : Form
     {
-        public Form1()
+        public InterfazGeneral()
         {
             InitializeComponent();
         }

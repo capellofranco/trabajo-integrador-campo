@@ -1,0 +1,6 @@
+C:\Users\capel\OneDrive\Escritorio\facultad\campo\trabajo integrador campo\BE\bin\Debug\BE.dll
+C:\Users\capel\OneDrive\Escritorio\facultad\campo\trabajo integrador campo\BE\bin\Debug\BE.pdb
+C:\Users\capel\OneDrive\Escritorio\facultad\campo\trabajo integrador campo\BE\obj\Debug\BE.csproj.AssemblyReference.cache
+C:\Users\capel\OneDrive\Escritorio\facultad\campo\trabajo integrador campo\BE\obj\Debug\BE.csproj.CoreCompileInputs.cache
+C:\Users\capel\OneDrive\Escritorio\facultad\campo\trabajo integrador campo\BE\obj\Debug\BE.dll
+C:\Users\capel\OneDrive\Escritorio\facultad\campo\trabajo integrador campo\BE\obj\Debug\BE.pdb

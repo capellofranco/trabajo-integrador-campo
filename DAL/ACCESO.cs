@@ -17,7 +17,7 @@ namespace DAL
         public void Conectar()
         {
             conexion = new SqlConnection();
-            conexion.ConnectionString = "";
+            conexion.ConnectionString = "initial catalog=TrabajoIntegrador; data source=DESKTOP-2T3QCEB\\SQLEXPRESS; integrated security=SSPI";
             conexion.Open();
         }
 

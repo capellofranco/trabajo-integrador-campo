@@ -30,15 +30,16 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public USUARIO ObtenerUsuarioPorNombre(string nombre)
+        public USUARIO Login(string nombre, string contra)
         {
             acceso = new ACCESO();
             acceso.Conectar();
 
             List<SqlParameter> parametros = new List<SqlParameter>();
-            parametros.Add(acceso.CrearParametro("@nom", nombre));
+            parametros.Add(acceso.CrearParametro("@NombreUsuario", nombre));
+            parametros.Add(acceso.CrearParametro("@Password", contra));
 
-            DataTable tabla = acceso.Leer("ObtenerUsuPorNom", parametros);
+            DataTable tabla = acceso.Leer("Login", parametros);
             acceso.Desconectar();
 
             if(tabla.Rows.Count == 0)
@@ -49,7 +50,12 @@ namespace DAL
             DataRow fila = tabla.Rows[0];
 
             USUARIO usuario = new USUARIO();
-            usuario.ID = ;
+            usuario.Id = int.Parse(fila["ID"].ToString());
+            usuario.Username = fila["NombreUsuario"].ToString();
+            usuario.Password = fila["Password"].ToString();
+
+            return usuario;
+
         }
     }
 }
