@@ -16,5 +16,11 @@ namespace trabajo_integrador
         {
             InitializeComponent();
         }
+
+        private void registrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FRMRegistrar registrar = new FRMRegistrar();
+            registrar.ShowDialog();
+        }
     }
 }

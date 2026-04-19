@@ -40,3 +40,4 @@ C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\obj\De
 C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\obj\Debug\trabajo .F3D94075.Up2Date
 C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\obj\Debug\trabajo integrador.exe
 C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\obj\Debug\trabajo integrador.pdb
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\obj\Debug\trabajo_integrador.FRMRegistrar.resources
