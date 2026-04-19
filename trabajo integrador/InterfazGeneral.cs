@@ -12,9 +12,23 @@ namespace trabajo_integrador
 {
     public partial class InterfazGeneral : Form
     {
+        BLL.USUARIO_BLL gestorusuario = new BLL.USUARIO_BLL();
         public InterfazGeneral()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            gestorusuario.Logout();
+            this.Close();
+            Application.Restart();
+        }
+
+        private void registrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FRMRegistrar frm = new FRMRegistrar();
+            frm.ShowDialog();
         }
     }
 }
