@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,10 +18,24 @@ namespace trabajo_integrador
             InitializeComponent();
         }
 
+        private USUARIO_BLL gestorusuario = new USUARIO_BLL();
+
         private void registrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FRMRegistrar registrar = new FRMRegistrar();
             registrar.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            gestorusuario.Logout();
+            this.Close();
+            Application.Restart();
+        }
+
+        private void InterfazGeneral_FormClosed(object sender, FormClosedEventArgs e)
+        {
+           
         }
     }
 }
