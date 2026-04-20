@@ -30,5 +30,11 @@ namespace trabajo_integrador
             FRMRegistrar frm = new FRMRegistrar();
             frm.ShowDialog();
         }
+
+        private void bitacoraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FRMBitacora frm = new FRMBitacora();
+            frm.ShowDialog();
+        }
     }
 }

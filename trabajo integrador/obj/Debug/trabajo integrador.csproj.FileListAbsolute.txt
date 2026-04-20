@@ -41,3 +41,4 @@ C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\obj\De
 C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\obj\Debug\trabajo integrador.exe
 C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\obj\Debug\trabajo integrador.pdb
 C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\obj\Debug\trabajo_integrador.FRMRegistrar.resources
+C:\Users\Usuario\Source\Repos\trabajo-integrador-campo\trabajo integrador\obj\Debug\trabajo_integrador.FRMBitacora.resources
