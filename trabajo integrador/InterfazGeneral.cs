@@ -36,5 +36,10 @@ namespace trabajo_integrador
             FRMBitacora frm = new FRMBitacora();
             frm.ShowDialog();
         }
+
+        private void InterfazGeneral_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

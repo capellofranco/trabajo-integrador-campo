@@ -47,6 +47,7 @@ namespace DAL
                 {
                     IdBitacora = Convert.ToInt32(fila["IdBitacora"]),
                     FechaHora = Convert.ToDateTime(fila["FechaHora"]),
+                    IdUsuario = fila["IdUsuario"] != DBNull.Value ? Convert.ToInt32(fila["IdUsuario"]) : (int?)null,
                     NombreUsuario = fila["NombreUsuario"].ToString(),
                     Modulo = fila["Modulo"].ToString(),
                     Accion = fila["Accion"].ToString(),
