@@ -37,14 +37,14 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public USUARIO Login(string nombre, string contra)
+        public USUARIO Login(string nombre)
         {
             acceso = new ACCESO();
             acceso.Conectar();
 
             List<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Add(acceso.CrearParametro("@NombreUsuario", nombre));
-            parametros.Add(acceso.CrearParametro("@Password", contra));
+  
 
             DataTable tabla = acceso.Leer("Login", parametros);
             acceso.Desconectar();

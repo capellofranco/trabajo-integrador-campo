@@ -17,14 +17,19 @@ namespace BLL
 
         public bool Login(string nom, string pass)
         {
-            string passwordHasheada = HashHelper.GenerarHash(pass);
-            USUARIO usuario =mapper.Login(nom, passwordHasheada);
+            
+            USUARIO usuario =mapper.Login(nom);
 
             if(usuario != null)
             {
-                SESSION_MANAGER.Login(usuario);
-                bitacoraBLL.RegistrarEvento(usuario.Id, usuario.Username, "Seguridad", "Login Exitoso", "INFO");
-                return true;
+                bool passcorrecto = HashHelper.VerificarHash(pass, usuario.Password);
+                if (passcorrecto)
+                {
+                    SESSION_MANAGER.Login(usuario);
+                    bitacoraBLL.RegistrarEvento(usuario.Id, usuario.Username, "Seguridad", "Login Exitoso", "INFO");
+                    return true;
+                }
+                
             }
             bitacoraBLL.RegistrarEvento(null, nom, "Seguridad", "Intento de login fallido", "WARNING");
             return false;
