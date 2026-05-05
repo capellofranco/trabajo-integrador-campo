@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BITACORA_BLL.cs" />
     <Compile Include="USUARIO_BLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -52,6 +53,10 @@
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{5d548f81-a42d-42ea-b960-f0c3f97f5bc3}</Project>
       <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SEC\SEC.csproj">
+      <Project>{35702d2a-55a5-4fad-9274-6133d14c8960}</Project>
+      <Name>SEC</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
