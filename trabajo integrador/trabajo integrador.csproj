@@ -58,6 +58,12 @@
     <Compile Include="FRMRegistrar.Designer.cs">
       <DependentUpon>FRMRegistrar.cs</DependentUpon>
     </Compile>
+    <Compile Include="FRMUsuariosBloqueados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRMUsuariosBloqueados.Designer.cs">
+      <DependentUpon>FRMUsuariosBloqueados.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FRMRegistrar.resx">
       <DependentUpon>FRMRegistrar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRMUsuariosBloqueados.resx">
+      <DependentUpon>FRMUsuariosBloqueados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InterfazGeneral.resx">
       <DependentUpon>InterfazGeneral.cs</DependentUpon>

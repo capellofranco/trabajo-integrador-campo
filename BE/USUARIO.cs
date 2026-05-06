@@ -32,6 +32,23 @@ namespace BE
 			set { password = value; }
 		}
 
+		private int intentosFallidos;
+
+		public int IntentosFallidos
+		{
+			get { return intentosFallidos; }
+			set { intentosFallidos = value; }
+		}
+
+
+		private int bloqueado;
+
+		public int Bloqueado
+		{
+			get { return bloqueado; }
+			set { bloqueado = value; }
+		}
+
 
 
 

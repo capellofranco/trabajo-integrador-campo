@@ -41,5 +41,11 @@ namespace trabajo_integrador
         {
 
         }
+
+        private void bloqueadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FRMUsuariosBloqueados frm = new FRMUsuariosBloqueados();
+            frm.ShowDialog();
+        }
     }
 }

@@ -17,22 +17,53 @@ namespace BLL
 
         public bool Login(string nom, string pass)
         {
-            
-            USUARIO usuario =mapper.Login(nom);
 
-            if(usuario != null)
+            USUARIO usuario = mapper.Login(nom);
+
+            
+            if (usuario == null)
             {
-                bool passcorrecto = HashHelper.VerificarHash(pass, usuario.Password);
-                if (passcorrecto)
-                {
-                    SESSION_MANAGER.Login(usuario);
-                    bitacoraBLL.RegistrarEvento(usuario.Id, usuario.Username, "Seguridad", "Login Exitoso", "INFO");
-                    return true;
-                }
-                
+                bitacoraBLL.RegistrarEvento(null, nom, "Seguridad","Intento de login: usuario inexistente", "WARNING");
+                return false;
             }
-            bitacoraBLL.RegistrarEvento(null, nom, "Seguridad", "Intento de login fallido", "WARNING");
-            return false;
+
+            
+            if (usuario.Bloqueado == 1)
+            {
+                bitacoraBLL.RegistrarEvento(usuario.Id, usuario.Username, "Seguridad","Intento de login: usuario bloqueado", "ERROR");
+                return false;
+            }
+
+            bool passCorrecta = HashHelper.VerificarHash(pass, usuario.Password);
+
+            if (passCorrecta)
+            {
+                mapper.ResetearIntentos(nom);
+                SESSION_MANAGER.Login(usuario);
+                bitacoraBLL.RegistrarEvento(usuario.Id, usuario.Username, "Seguridad","Login exitoso", "INFO");
+                return true;
+            }
+            else
+            {
+                mapper.IncrementarIntentosFallidos(nom);
+
+                
+                USUARIO usuarioActualizado = mapper.Login(nom);
+                int intentos = int.Parse(usuarioActualizado.IntentosFallidos.ToString());
+                bool recienBloqueado = usuarioActualizado.Bloqueado == 1;
+
+                if (recienBloqueado)
+                {
+                    bitacoraBLL.RegistrarEvento(usuario.Id, usuario.Username, "Seguridad",$"Usuario BLOQUEADO tras {intentos} intentos fallidos", "ERROR");
+                }
+                else
+                {
+                    bitacoraBLL.RegistrarEvento(usuario.Id, usuario.Username, "Seguridad",$"Contraseña incorrecta (intento {intentos}/3)", "WARNING");
+                }
+
+                return false;
+            }
+
         }
         public void Logout()
         {
@@ -52,6 +83,18 @@ namespace BLL
             }
 
             return resultado;
+        }
+
+        public void DesbloquearUsuario(string nombreUsuario)
+        {
+            mapper.Desbloquear(nombreUsuario);
+            var admin = SESSION_MANAGER.GetInstance.Usuario;
+            bitacoraBLL.RegistrarEvento(admin.Id, admin.Username, "Seguridad",$"Admin desbloqueó al usuario: {nombreUsuario}", "INFO");
+        }
+
+        public List<USUARIO> ObtenerUsuariosBloqueados()
+        {
+            return mapper.ListarBloqueados();
         }
 
     }

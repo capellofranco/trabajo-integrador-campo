@@ -22,28 +22,38 @@ namespace trabajo_integrador
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrEmpty(textBox1.Text) || string.IsNullOrEmpty(textBox2.Text))
+            if (string.IsNullOrEmpty(textBox1.Text) || string.IsNullOrEmpty(textBox2.Text))
             {
-                MessageBox.Show("Completa los campos correspondientes");
+                MessageBox.Show("Completá los campos correspondientes.");
+                return;
+            }
+
+            bool login = usubll.Login(textBox1.Text, textBox2.Text);
+
+            if (login)
+            {
+                InterfazGeneral i = new InterfazGeneral();
+                i.Show();
+                this.Hide();
             }
             else
             {
-                bool login = usubll.Login(textBox1.Text, textBox2.Text);
+                var bloqueados = usubll.ObtenerUsuariosBloqueados();
+                bool estaBloqueado = bloqueados.Exists(u => u.Username.Equals(textBox1.Text, StringComparison.OrdinalIgnoreCase));
 
-                if (login)
+                if (estaBloqueado)
                 {
-                    InterfazGeneral i = new InterfazGeneral();
-                    i.Show();
-
-                    this.Hide();
+                    MessageBox.Show("Tu cuenta ha sido bloqueada por exceder el límite de intentos.\n" +"Contactá al administrador para recuperar el acceso.","Cuenta bloqueada",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }
                 else
                 {
-                    MessageBox.Show("Usuario o contraseña incorrecta");
+                    MessageBox.Show("Usuario o contraseña incorrectos.","Error de login",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 }
             }
+        
 
-               
+
+
         }
     }
 }
