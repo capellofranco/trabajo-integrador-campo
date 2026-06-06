@@ -44,6 +44,7 @@
     <Compile Include="ACCESO_BLL.cs" />
     <Compile Include="BITACORA_BLL.cs" />
     <Compile Include="PERMISOMAP_BLL.cs" />
+    <Compile Include="PRODUCTO_BLL.cs" />
     <Compile Include="USUARIO_BLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

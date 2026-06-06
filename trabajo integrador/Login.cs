@@ -55,5 +55,17 @@ namespace trabajo_integrador
 
 
         }
+
+        private void button1_MouseEnter(object sender, EventArgs e)
+        {
+            button1.BackColor = Color.Navy;
+            button1.ForeColor = Color.White;
+        }
+
+        private void button1_MouseLeave(object sender, EventArgs e)
+        {
+            button1.BackColor = Color.White;
+            button1.ForeColor = Color.Navy;
+        }
     }
 }

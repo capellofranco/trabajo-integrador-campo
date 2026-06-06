@@ -43,7 +43,9 @@
   <ItemGroup>
     <Compile Include="BITACORA.cs" />
     <Compile Include="ComponenteAcceso.cs" />
+    <Compile Include="HistoricoPrecio.cs" />
     <Compile Include="PERMISO.cs" />
+    <Compile Include="PRODUCTO.cs" />
     <Compile Include="ROL.cs" />
     <Compile Include="USUARIO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

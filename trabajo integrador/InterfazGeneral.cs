@@ -28,14 +28,12 @@ namespace trabajo_integrador
 
         private void registrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FRMRegistrar frm = new FRMRegistrar();
-            frm.ShowDialog();
+            
         }
 
         private void bitacoraToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FRMBitacora frm = new FRMBitacora();
-            frm.ShowDialog();
+            
         }
 
         private void InterfazGeneral_Load(object sender, EventArgs e)
@@ -75,6 +73,48 @@ namespace trabajo_integrador
         private void gestionRolesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FRMGestionRoles frm = new FRMGestionRoles();
+            frm.ShowDialog();
+        }
+
+        private void usuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FRMRegistrar frm = new FRMRegistrar();
+            frm.ShowDialog();
+        }
+
+        private void button1_MouseEnter(object sender, EventArgs e)
+        {
+            button1.BackColor = Color.Navy;
+            button1.ForeColor = Color.White;
+        }
+
+        private void button1_MouseLeave(object sender, EventArgs e)
+        {
+            button1.BackColor = Color.White;
+            button1.ForeColor = Color.Navy;
+        }
+
+        private void productoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FRMProductoABM frm = new FRMProductoABM();  
+            frm.ShowDialog();
+        }
+
+        private void productoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FRMProducto frm = new FRMProducto();
+            frm.ShowDialog();
+        }
+
+        private void bitacoraToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FRMBitacora frm = new FRMBitacora();
+            frm.ShowDialog();
+        }
+
+        private void historicoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FRMHistorico frm = new FRMHistorico();  
             frm.ShowDialog();
         }
     }

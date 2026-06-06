@@ -265,5 +265,118 @@ namespace trabajo_integrador
             }
             catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
         }
+
+        private void groupBox6_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCrearRol_MouseEnter(object sender, EventArgs e)
+        {
+            btnCrearRol.BackColor = Color.Navy;
+            btnCrearRol.ForeColor = Color.White;
+        }
+
+        private void btnCrearRol_MouseLeave(object sender, EventArgs e)
+        {
+            btnCrearRol.BackColor = Color.White;
+            btnCrearRol.ForeColor = Color.Navy;
+        }
+
+        private void btnAgregarSubRol_MouseEnter(object sender, EventArgs e)
+        {
+            btnAgregarSubRol.BackColor = Color.Navy;
+            btnAgregarSubRol.ForeColor = Color.White;
+        }
+
+        private void btnAgregarSubRol_MouseLeave(object sender, EventArgs e)
+        {
+            btnAgregarSubRol.BackColor = Color.White;
+            btnAgregarSubRol.ForeColor = Color.Navy;
+        }
+
+        private void btnQuitarSubRol_MouseEnter(object sender, EventArgs e)
+        {
+            btnQuitarSubRol.BackColor = Color.Navy;
+            btnQuitarSubRol.ForeColor = Color.White;
+        }
+
+        private void btnQuitarSubRol_MouseLeave(object sender, EventArgs e)
+        {
+            btnQuitarSubRol.BackColor = Color.White;
+            btnQuitarSubRol.ForeColor = Color.Navy;
+        }
+
+        private void btnAgregarPermiso_MouseEnter(object sender, EventArgs e)
+        {
+            btnAgregarPermiso.BackColor = Color.Navy;
+            btnAgregarPermiso.ForeColor = Color.White;
+        }
+
+        private void btnAgregarPermiso_MouseLeave(object sender, EventArgs e)
+        {
+            btnAgregarPermiso.BackColor = Color.White;
+            btnAgregarPermiso.ForeColor = Color.Navy;
+        }
+
+        private void btnQuitarPermiso_MouseEnter(object sender, EventArgs e)
+        {
+            btnQuitarPermiso.BackColor = Color.Navy;
+            btnQuitarPermiso.ForeColor = Color.White;
+        }
+
+        private void btnQuitarPermiso_MouseLeave(object sender, EventArgs e)
+        {
+            btnQuitarPermiso.BackColor = Color.White;
+            btnQuitarPermiso.ForeColor = Color.Navy;
+        }
+
+        private void btnAsignarRol_MouseEnter(object sender, EventArgs e)
+        {
+            btnAsignarRol.BackColor = Color.Navy;
+            btnAsignarRol.ForeColor = Color.White;
+        }
+
+        private void btnAsignarRol_MouseLeave(object sender, EventArgs e)
+        {
+            btnAsignarRol.BackColor = Color.White;
+            btnAsignarRol.ForeColor = Color.Navy;
+        }
+
+        private void btnQuitarRol_MouseEnter(object sender, EventArgs e)
+        {
+            btnQuitarRol.BackColor = Color.Navy;
+            btnQuitarRol.ForeColor = Color.White;
+        }
+
+        private void btnQuitarRol_MouseLeave(object sender, EventArgs e)
+        {
+            btnQuitarRol.BackColor = Color.White;
+            btnQuitarRol.ForeColor = Color.Navy;
+        }
+
+        private void btnAgregarPermisoDirecto_MouseEnter(object sender, EventArgs e)
+        {
+            btnAgregarPermisoDirecto.BackColor = Color.Navy;
+            btnAgregarPermisoDirecto.ForeColor = Color.White;
+        }
+
+        private void btnAgregarPermisoDirecto_MouseLeave(object sender, EventArgs e)
+        {
+            btnAgregarPermisoDirecto.BackColor = Color.White;
+            btnAgregarPermisoDirecto.ForeColor = Color.Navy;
+        }
+
+        private void btnQuitarPermisoDirecto_MouseEnter(object sender, EventArgs e)
+        {
+            btnQuitarPermisoDirecto.BackColor = Color.Navy;
+            btnQuitarPermisoDirecto.ForeColor = Color.White;
+        }
+
+        private void btnQuitarPermisoDirecto_MouseLeave(object sender, EventArgs e)
+        {
+            btnQuitarPermisoDirecto.BackColor = Color.White;
+            btnQuitarPermisoDirecto.ForeColor = Color.Navy;
+        }
     }
 }

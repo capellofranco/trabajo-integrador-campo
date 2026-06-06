@@ -32,14 +32,20 @@ namespace DAL
             return fias;
         }
 
-        public List<BITACORA> ListarFiltrado(DateTime? desde = null, DateTime? hasta = null)
+        public List<BITACORA> ListarFiltrado(BITACORA obj, DateTime? desde = null, DateTime? hasta = null)
         {
             acceso.Conectar();
             List<SqlParameter> parametro = new List<SqlParameter>();
+
             parametro.Add(new SqlParameter("@Desde", desde.HasValue ? (object)desde.Value : DBNull.Value));
             parametro.Add(new SqlParameter("@Hasta", hasta.HasValue ? (object)hasta.Value : DBNull.Value));
+            parametro.Add(new SqlParameter("@NombreUsuario", string.IsNullOrEmpty(obj.NombreUsuario) ? DBNull.Value : (object)obj.NombreUsuario));
+            parametro.Add(new SqlParameter("@Criticidad", string.IsNullOrEmpty(obj.Criticidad) ? DBNull.Value : (object)obj.Criticidad));
+            parametro.Add(new SqlParameter("@Modulo", string.IsNullOrEmpty(obj.Modulo) ? DBNull.Value : (object)obj.Modulo));
+
             DataTable dt = acceso.Leer("ListarBitacora", parametro);
             acceso.Desconectar();
+
             List<BE.BITACORA> lista = new List<BITACORA>();
             foreach (DataRow fila in dt.Rows)
             {
@@ -59,7 +65,7 @@ namespace DAL
 
         public override List<BITACORA> Listar()
         {
-            return ListarFiltrado();
+            return ListarFiltrado(new BE.BITACORA());
         }
 
         public override int Modificar(BITACORA obj)

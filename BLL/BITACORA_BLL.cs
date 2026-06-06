@@ -28,10 +28,10 @@ namespace BLL
             
         }
 
-        public List<BE.BITACORA> ObtenerRegistros(DateTime? desde = null, DateTime? hasta = null)
+        public List<BE.BITACORA> ObtenerRegistros(BE.BITACORA objFiltros, DateTime? desde = null, DateTime? hasta = null)
         {
             
-            return gestorbitacora.ListarFiltrado(desde, hasta);
+            return gestorbitacora.ListarFiltrado(objFiltros, desde, hasta);
         }
     }
 }

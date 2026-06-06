@@ -24,13 +24,34 @@ namespace trabajo_integrador
 
         private void FRMBitacora_Load(object sender, EventArgs e)
         {
+            cmbCriticidad.Items.Clear();
+            cmbCriticidad.Items.Add("Todos");
+            cmbCriticidad.Items.Add("INFO");
+            cmbCriticidad.Items.Add("WARNING");
+            cmbCriticidad.Items.Add("ERROR");
+            cmbCriticidad.SelectedIndex = 0;
+
+            cmbModulo.Items.Clear();
+            cmbModulo.Items.Add("Todos");
+            cmbModulo.Items.Add("Seguridad");
+            cmbModulo.Items.Add("Usuarios");
+            cmbModulo.Items.Add("Gestión Roles");
+            cmbModulo.Items.Add("Productos");
+            cmbModulo.Items.Add("Control de Cambios");
+            cmbModulo.SelectedIndex = 0;
+
             CargarGrilla();
         }
 
-        private void CargarGrilla(DateTime? desde = null, DateTime? hasta = null)
+        private void CargarGrilla(BE.BITACORA objFiltros = null, DateTime? desde = null, DateTime? hasta = null)
         {
+            if (objFiltros == null)
+            {
+                objFiltros = new BE.BITACORA();
+            }
+
             dataGridView1.DataSource = null;
-            dataGridView1.DataSource = gestorbitacora.ObtenerRegistros(desde, hasta);
+            dataGridView1.DataSource = gestorbitacora.ObtenerRegistros(objFiltros, desde, hasta);
 
             if (dataGridView1.Columns.Contains("IdBitacora"))
                 dataGridView1.Columns["IdBitacora"].Visible = false;
@@ -43,6 +64,7 @@ namespace trabajo_integrador
 
             if (dataGridView1.Columns.Contains("NombreUsuario"))
                 dataGridView1.Columns["NombreUsuario"].HeaderText = "Usuario";
+
             FormatearGrilla();
         }
 
@@ -62,9 +84,31 @@ namespace trabajo_integrador
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click( object sender, EventArgs e)
         {
-            CargarGrilla(dtpDesde.Value, dtpHasta.Value);
+            BE.BITACORA objFiltros = new BE.BITACORA();
+
+            objFiltros.NombreUsuario = string.IsNullOrWhiteSpace(txtUsuario.Text) ? null : txtUsuario.Text.Trim();
+
+            string criticidad = cmbCriticidad.SelectedItem?.ToString();
+            if (string.IsNullOrEmpty(criticidad) || criticidad == "Todos")
+            {
+                objFiltros.Criticidad = null;
+            }
+            else
+            {
+                objFiltros.Criticidad = criticidad;
+            }
+            string modulo = cmbModulo.SelectedItem?.ToString();
+            if (string.IsNullOrEmpty(modulo) || modulo == "Todos")
+            {
+                objFiltros.Modulo = null;
+            }
+            else
+            {
+                objFiltros.Modulo = modulo;
+            }
+            CargarGrilla(objFiltros, dtpDesde.Value, dtpHasta.Value);
         }
     }
 }

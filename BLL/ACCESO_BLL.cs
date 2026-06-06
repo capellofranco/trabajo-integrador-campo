@@ -10,6 +10,7 @@ namespace BLL
     {
         private MP_ROL _mpRol = new MP_ROL();
         private MP_PERMISO _mpPermiso = new MP_PERMISO();
+        private BITACORA_BLL _bitacoraBLL = new BITACORA_BLL();
 
         // ── Construcción del árbol Composite por usuario ──────────────────
 
@@ -82,6 +83,7 @@ namespace BLL
             if (string.IsNullOrWhiteSpace(nombre))
                 throw new Exception("El nombre del rol no puede estar vacío.");
             _mpRol.Insertar(new BE.ROL(0, nombre, descripcion));
+            RegistrarAuditoria($"Se creó un nuevo rol: {nombre}");
         }
 
         // ── Gestión de Permisos en Roles ──────────────────────────────────
@@ -89,10 +91,16 @@ namespace BLL
         public List<BE.PERMISO> ListarTodosLosPermisos() => _mpPermiso.Listar();
 
         public void AgregarPermisoARol(int idRol, int idPermiso)
-            => _mpPermiso.AgregarPermisoARol(idRol, idPermiso);
+        {
+            _mpPermiso.AgregarPermisoARol(idRol, idPermiso);
+            RegistrarAuditoria($"Se agregó el permiso '{ObtenerNombrePermiso(idPermiso)}' al rol '{ObtenerNombreRol(idRol)}'");
+        }
 
         public void QuitarPermisoDeRol(int idRol, int idPermiso)
-            => _mpPermiso.QuitarPermisoDeRol(idRol, idPermiso);
+        {
+            _mpPermiso.QuitarPermisoDeRol(idRol, idPermiso);
+            RegistrarAuditoria($"Se quitó el permiso '{ObtenerNombrePermiso(idPermiso)}' del rol '{ObtenerNombreRol(idRol)}'");
+        }
 
         // ── Asignación Usuario ↔ Rol ──────────────────────────────────────
 
@@ -102,10 +110,14 @@ namespace BLL
             if (actuales.Exists(r => r.IdRol == idRol))
                 throw new Exception("El usuario ya tiene ese rol asignado.");
             _mpRol.AsignarRolAUsuario(idUsuario, idRol);
+            RegistrarAuditoria($"Se asignó el rol '{ObtenerNombreRol(idRol)}' al usuario '{ObtenerNombreUsuario(idUsuario)}'");
         }
 
         public void QuitarRolDeUsuario(int idUsuario, int idRol)
-            => _mpRol.QuitarRolDeUsuario(idUsuario, idRol);
+        {
+            _mpRol.QuitarRolDeUsuario(idUsuario, idRol);
+            RegistrarAuditoria($"Se quitó el rol '{ObtenerNombreRol(idRol)}' al usuario '{ObtenerNombreUsuario(idUsuario)}'");
+        }
 
         // ── Sub-roles por usuario ─────────────────────────────────────────
 
@@ -116,10 +128,14 @@ namespace BLL
             if (EsDescendienteDeUsuario(idUsuario, idHijo, idPadre, new HashSet<int>()))
                 throw new Exception("Operación inválida: generaría una referencia circular.");
             _mpRol.AgregarSubRolAUsuario(idUsuario, idPadre, idHijo);
+            RegistrarAuditoria($"Se asignó el sub-rol '{ObtenerNombreRol(idHijo)}' al rol padre '{ObtenerNombreRol(idPadre)}' para el usuario '{ObtenerNombreUsuario(idUsuario)}'");
         }
 
         public void QuitarSubRolDeUsuario(int idUsuario, int idPadre, int idHijo)
-            => _mpRol.QuitarSubRolDeUsuario(idUsuario, idPadre, idHijo);
+        {
+            _mpRol.QuitarSubRolDeUsuario(idUsuario, idPadre, idHijo);
+            RegistrarAuditoria($"Se quitó el sub-rol '{ObtenerNombreRol(idHijo)}' del rol padre '{ObtenerNombreRol(idPadre)}' para el usuario '{ObtenerNombreUsuario(idUsuario)}'");
+        }
 
         private bool EsDescendienteDeUsuario(int idUsuario, int idRol, int candidato, HashSet<int> visitados)
         {
@@ -145,10 +161,49 @@ namespace BLL
             if (actuales.Exists(p => p.IdPermiso == idPermiso))
                 throw new Exception("El usuario ya tiene ese permiso asignado directamente.");
             _mpPermiso.AgregarPermisoAUsuario(idUsuario, idPermiso);
+            RegistrarAuditoria($"Se otorgó el permiso directo '{ObtenerNombrePermiso(idPermiso)}' al usuario '{ObtenerNombreUsuario(idUsuario)}'");
         }
 
         public void QuitarPermisoAUsuario(int idUsuario, int idPermiso)
-            => _mpPermiso.QuitarPermisoDeUsuario(idUsuario, idPermiso);
+        {
+            _mpPermiso.QuitarPermisoDeUsuario(idUsuario, idPermiso);
+            RegistrarAuditoria($"Se quitó el permiso directo '{ObtenerNombrePermiso(idPermiso)}' al usuario '{ObtenerNombreUsuario(idUsuario)}'");
+        }
+        private string ObtenerNombreUsuario(int idUsuario)
+        {
+            var usuBLL = new USUARIO_BLL();
+            var usuario = usuBLL.ListarUsuarios().FirstOrDefault(u => u.Id == idUsuario);
+            return usuario != null ? usuario.Username : idUsuario.ToString();
+        }
+
+        private string ObtenerNombreRol(int idRol)
+        {
+            var rol = _mpRol.Listar().FirstOrDefault(r => r.IdRol == idRol);
+            return rol != null ? rol.Nombre : idRol.ToString();
+        }
+
+        private string ObtenerNombrePermiso(int idPermiso)
+        {
+            var permiso = _mpPermiso.Listar().FirstOrDefault(p => p.IdPermiso == idPermiso);
+            return permiso != null ? permiso.Nombre : idPermiso.ToString();
+        }
+
+
+        private void RegistrarAuditoria(string accionRealizada)
+        {
+            try
+            {
+                var usuarioActivo = SEC.SESSION_MANAGER.GetInstance.Usuario;
+                if (usuarioActivo != null)
+                {
+                    _bitacoraBLL.RegistrarEvento(usuarioActivo.Id, usuarioActivo.Username, "Gestión Roles", accionRealizada, "INFO");
+                }
+            }
+            catch
+            {
+                
+            }
+        }
     }
 }
 
