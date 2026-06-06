@@ -40,6 +40,9 @@ namespace BLL
             {
                 mapper.ResetearIntentos(nom);
                 SESSION_MANAGER.Login(usuario);
+                var accesoBLL = new ACCESO_BLL();
+                var permisos = accesoBLL.ObtenerPermisosDeUsuario(usuario.Id);
+                SESSION_MANAGER.GetInstance.CargarPermisos(permisos);
                 bitacoraBLL.RegistrarEvento(usuario.Id, usuario.Username, "Seguridad","Login exitoso", "INFO");
                 return true;
             }
@@ -97,5 +100,14 @@ namespace BLL
             return mapper.ListarBloqueados();
         }
 
+        public List<USUARIO> ListarUsuarios()
+        {
+            return mapper.ListarTodos();
+        }
+
+        public bool UsuarioTienePermiso(string nombrePermiso)
+        {
+            return SEC.SESSION_MANAGER.GetInstance.TienePermiso(nombrePermiso);
+        }
     }
 }

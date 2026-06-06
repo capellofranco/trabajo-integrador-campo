@@ -15,10 +15,27 @@
     </TypeIdentifier>
   </Class>
   <Class Name="DAL.MP_USUARIO">
-    <Position X="4.5" Y="0.5" Width="1.5" />
+    <Position X="5.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAEQAAAAACAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AABAAAQAUEwAAAAACAAAAAAAEIAAAAAAAAAQAAAAAAA=</HashCode>
       <FileName>MP_USUARIO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.MP_ROL">
+    <Position X="2.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAEAAQEQAAAAACAACAAABAoAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>MP_ROL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.MP_PERMISO">
+    <Position X="5.5" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQEQAAAAACAAAAAAAlIAAAAAABgAAAAABAAQ=</HashCode>
+      <FileName>MP_PERMISO.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

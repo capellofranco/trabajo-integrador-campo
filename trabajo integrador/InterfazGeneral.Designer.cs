@@ -31,8 +31,9 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.registrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bitacoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
             this.bloqueadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button1 = new System.Windows.Forms.Button();
+            this.gestionRolesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,7 +43,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.registrarToolStripMenuItem,
             this.bitacoraToolStripMenuItem,
-            this.bloqueadosToolStripMenuItem});
+            this.bloqueadosToolStripMenuItem,
+            this.gestionRolesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1247, 28);
@@ -63,6 +65,13 @@
             this.bitacoraToolStripMenuItem.Text = "Bitacora";
             this.bitacoraToolStripMenuItem.Click += new System.EventHandler(this.bitacoraToolStripMenuItem_Click);
             // 
+            // bloqueadosToolStripMenuItem
+            // 
+            this.bloqueadosToolStripMenuItem.Name = "bloqueadosToolStripMenuItem";
+            this.bloqueadosToolStripMenuItem.Size = new System.Drawing.Size(102, 24);
+            this.bloqueadosToolStripMenuItem.Text = "Bloqueados";
+            this.bloqueadosToolStripMenuItem.Click += new System.EventHandler(this.bloqueadosToolStripMenuItem_Click);
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(1065, 708);
@@ -74,12 +83,12 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // bloqueadosToolStripMenuItem
+            // gestionRolesToolStripMenuItem
             // 
-            this.bloqueadosToolStripMenuItem.Name = "bloqueadosToolStripMenuItem";
-            this.bloqueadosToolStripMenuItem.Size = new System.Drawing.Size(102, 24);
-            this.bloqueadosToolStripMenuItem.Text = "Bloqueados";
-            this.bloqueadosToolStripMenuItem.Click += new System.EventHandler(this.bloqueadosToolStripMenuItem_Click);
+            this.gestionRolesToolStripMenuItem.Name = "gestionRolesToolStripMenuItem";
+            this.gestionRolesToolStripMenuItem.Size = new System.Drawing.Size(113, 24);
+            this.gestionRolesToolStripMenuItem.Text = "Gestion Roles";
+            this.gestionRolesToolStripMenuItem.Click += new System.EventHandler(this.gestionRolesToolStripMenuItem_Click);
             // 
             // InterfazGeneral
             // 
@@ -109,5 +118,6 @@
         private System.Windows.Forms.ToolStripMenuItem bitacoraToolStripMenuItem;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolStripMenuItem bloqueadosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestionRolesToolStripMenuItem;
     }
 }

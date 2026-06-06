@@ -44,6 +44,8 @@
     <Compile Include="ACCESO.cs" />
     <Compile Include="MAPPER.cs" />
     <Compile Include="MP_BITACORA.cs" />
+    <Compile Include="MP_PERMISO.cs" />
+    <Compile Include="MP_ROL.cs" />
     <Compile Include="MP_USUARIO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

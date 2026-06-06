@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -39,12 +40,41 @@ namespace trabajo_integrador
 
         private void InterfazGeneral_Load(object sender, EventArgs e)
         {
-
+            AplicarVisibilidad();
         }
 
+        private void AplicarVisibilidad()
+        {
+            USUARIO_BLL usuarioBLL = new USUARIO_BLL();
+
+            
+            foreach (var entry in PERMISOMAP_BLL.MenuItems)
+            {
+                var item = menuStrip1.Items.Find(entry.Value, true);
+                if (item.Length > 0)
+                    item[0].Visible = false;
+            }
+
+            
+            foreach (var entry in PERMISOMAP_BLL.MenuItems)
+            {
+                if (usuarioBLL.UsuarioTienePermiso(entry.Key))
+                {
+                    var item = menuStrip1.Items.Find(entry.Value, true);
+                    if (item.Length > 0)
+                        item[0].Visible = true;
+                }
+            }
+        }
         private void bloqueadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FRMUsuariosBloqueados frm = new FRMUsuariosBloqueados();
+            frm.ShowDialog();
+        }
+
+        private void gestionRolesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FRMGestionRoles frm = new FRMGestionRoles();
             frm.ShowDialog();
         }
     }

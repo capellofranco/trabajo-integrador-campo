@@ -115,6 +115,21 @@ namespace DAL
             return lista;
         }
 
-
+        public List<BE.USUARIO> ListarTodos()
+        {
+            acceso.Conectar();
+            DataTable tabla = acceso.Leer("ListarUsuarios", null);
+            acceso.Desconectar();
+            var lista = new List<BE.USUARIO>();
+            foreach (DataRow fila in tabla.Rows)
+            {
+                lista.Add(new BE.USUARIO
+                {
+                    Id = int.Parse(fila["ID"].ToString()),
+                    Username = fila["NombreUsuario"].ToString()
+                });
+            }
+            return lista;
+        }
     }
 }
