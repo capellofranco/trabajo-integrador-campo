@@ -38,32 +38,61 @@ namespace trabajo_integrador
 
         private void InterfazGeneral_Load(object sender, EventArgs e)
         {
-            AplicarVisibilidad();
+
         }
 
         private void AplicarVisibilidad()
         {
             USUARIO_BLL usuarioBLL = new USUARIO_BLL();
 
-            
-            foreach (var entry in PERMISOMAP_BLL.MenuItems)
+            // Items directos
+            foreach (var entry in PERMISOMAP_BLL.ItemsDirectos)
             {
                 var item = menuStrip1.Items.Find(entry.Value, true);
                 if (item.Length > 0)
-                    item[0].Visible = false;
+                    item[0].Visible = usuarioBLL.UsuarioTienePermiso(entry.Key);
             }
 
-            
-            foreach (var entry in PERMISOMAP_BLL.MenuItems)
+            // Items con padre
+            foreach (var grupo in PERMISOMAP_BLL.ItemsConPadre)
             {
-                if (usuarioBLL.UsuarioTienePermiso(entry.Key))
+                var padreItem = menuStrip1.Items.Find(grupo.Key, true);
+                if (padreItem.Length == 0) continue;
+
+                var padre = (ToolStripMenuItem)padreItem[0];
+                padre.DropDownItems.Clear();
+
+                foreach (var hijo in grupo.Value)
                 {
-                    var item = menuStrip1.Items.Find(entry.Value, true);
-                    if (item.Length > 0)
-                        item[0].Visible = true;
+                    if (usuarioBLL.UsuarioTienePermiso(hijo.Permiso))
+                    {
+                        var nuevoItem = new ToolStripMenuItem(hijo.Texto);
+                        nuevoItem.Click += ObtenerHandler(hijo.Handler);
+                        padre.DropDownItems.Add(nuevoItem);
+                    }
                 }
+
+                padre.Visible = padre.DropDownItems.Count > 0;
             }
         }
+
+        private EventHandler ObtenerHandler(string nombreHandler)
+        {
+            switch (nombreHandler)
+            {
+                case "bitacoraToolStripMenuItem1_Click":
+                    return bitacoraToolStripMenuItem1_Click;
+                case "historicoToolStripMenuItem_Click":
+                    return historicoToolStripMenuItem_Click;
+                case "usuarioToolStripMenuItem_Click":
+                    return usuarioToolStripMenuItem_Click;
+                case "productoToolStripMenuItem1_Click":
+                    return productoToolStripMenuItem1_Click;
+                default:
+                    return null;
+            }
+        }
+
         private void bloqueadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FRMUsuariosBloqueados frm = new FRMUsuariosBloqueados();
@@ -116,6 +145,18 @@ namespace trabajo_integrador
         {
             FRMHistorico frm = new FRMHistorico();  
             frm.ShowDialog();
+        }
+
+        private void digitoVerificadorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FRMdv frm = new FRMdv();
+            frm.ShowDialog();
+            
+        }
+
+        private void InterfazGeneral_Shown(object sender, EventArgs e)
+        {
+            this.BeginInvoke(new Action(() => AplicarVisibilidad()));
         }
     }
 }

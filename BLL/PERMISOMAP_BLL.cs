@@ -7,13 +7,46 @@ namespace BLL
 {
     public static class PERMISOMAP_BLL
     {
-        public static readonly Dictionary<string, string> MenuItems =
+        //public static readonly Dictionary<string, string> MenuItems =
+        //    new Dictionary<string, string>
+        //    {
+        //        { "VerBitacora",           "bitacoraToolStripMenuItem1"       },
+        //        { "VerUsuariosBloqueados", "bloqueadosToolStripMenuItem"      },
+        //        { "RegistrarUsuario",      "usuarioToolStripMenuItem"       },
+        //        { "GestionarRoles",        "gestionRolesToolStripMenuItem"    },
+        //        { "VerProductos",          "productoToolStripMenuItem"        },
+        //        { "GestionProductos",      "productoToolStripMenuItem1"       },
+        //        { "VerHistorico",          "historicoToolStripMenuItem"       },
+        //        { "GestionarDV",           "digitoVerificadorToolStripMenuItem"},
+        //    };
+
+        public static readonly Dictionary<string, string> ItemsDirectos =
             new Dictionary<string, string>
             {
-                { "VerBitacora",           "bitacoraToolStripMenuItem"   },
-                { "VerUsuariosBloqueados", "bloqueadosToolStripMenuItem" },
-                { "RegistrarUsuario",      "registrarToolStripMenuItem"  },
-                { "GestionarRoles",        "gestionRolesToolStripMenuItem"      },
+                { "VerUsuariosBloqueados", "bloqueadosToolStripMenuItem"       },
+                { "GestionarRoles",        "gestionRolesToolStripMenuItem"     },
+                { "VerProductos",          "productoToolStripMenuItem"         },
+                { "GestionarDV",           "digitoVerificadorToolStripMenuItem"},
+            };
+
+        // Items con padre: nombre del padre → lista de (permiso, texto, handler)
+        public static readonly Dictionary<string, List<(string Permiso, string Texto, string Handler)>> ItemsConPadre =
+            new Dictionary<string, List<(string, string, string)>>
+            {
+                {
+                    "bitacoraToolStripMenuItem", new List<(string, string, string)>
+                    {
+                        ("VerBitacora",  "Bitacora",  "bitacoraToolStripMenuItem1_Click"),
+                        ("VerHistorico", "Historico", "historicoToolStripMenuItem_Click")
+                    }
+                },
+                {
+                    "registrarToolStripMenuItem", new List<(string, string, string)>
+                    {
+                        ("RegistrarUsuario", "Usuario", "usuarioToolStripMenuItem_Click"),
+                        ("GestionProductos", "Producto","productoToolStripMenuItem1_Click")
+                    }
+                }
             };
     }
 }

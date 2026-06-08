@@ -16,7 +16,26 @@ namespace trabajo_integrador
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+
+            var dvBLL = new BLL.DV_BLL();
+            var errores = dvBLL.VerificarIntegridad();
+
+            if (errores.Count > 0)
+            {
+                string mensaje = "⚠️ Se detectaron problemas de integridad en la base de datos:\n\n"
+                               + string.Join("\n", errores)
+                               + "\n\nSolo el Administrador puede ingresar al sistema.";
+
+                Login loginRestringido = new Login(soloAdmin: true);
+                loginRestringido.Show();
+                MessageBox.Show(loginRestringido, mensaje, "Error de integridad",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Run(loginRestringido);
+            }
+            else
+            {
+                Application.Run(new Login(soloAdmin: false));
+            }
         }
     }
 }

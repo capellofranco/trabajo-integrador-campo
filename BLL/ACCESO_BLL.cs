@@ -12,7 +12,7 @@ namespace BLL
         private MP_PERMISO _mpPermiso = new MP_PERMISO();
         private BITACORA_BLL _bitacoraBLL = new BITACORA_BLL();
 
-        // ── Construcción del árbol Composite por usuario ──────────────────
+        
 
         private BE.ROL ConstruirArbolRol(BE.ROL rol, int idUsuario, HashSet<int> visitados)
         {
@@ -25,7 +25,7 @@ namespace BLL
 
             var subRoles = _mpRol.ListarSubRolesDeUsuario(idUsuario, rol.IdRol);
             foreach (var sub in subRoles)
-                rol.Hijos.Add(ConstruirArbolRol(sub, idUsuario, visitados)); // RECURSIVO
+                rol.Hijos.Add(ConstruirArbolRol(sub, idUsuario, visitados)); 
 
             return rol;
         }

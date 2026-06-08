@@ -49,6 +49,14 @@ namespace BE
 			set { bloqueado = value; }
 		}
 
+		private int dvh;
+
+		public int DVH
+		{
+			get { return dvh; }
+			set { dvh = value; }
+		}
+
 
 
 

@@ -24,7 +24,7 @@
   <Class Name="DAL.MP_ROL">
     <Position X="2.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACAAAEAAQEQAAAAACAACAAABAoAAAAAIAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAGAAQEQAAAAACAACAAAAAoAAAAAIAAAAQAAAAAI=</HashCode>
       <FileName>MP_ROL.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -36,6 +36,13 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAQEQAAAAACAAAAAAAlIAAAAAABgAAAAABAAQ=</HashCode>
       <FileName>MP_PERMISO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.MP_DV">
+    <Position X="0.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAQCAAAQEQAAAAACAAAAAAAAIAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>MP_DV.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

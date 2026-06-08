@@ -10,14 +10,14 @@
   <Class Name="BLL.USUARIO_BLL">
     <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAICAAAIAIAAAAAAAgAAIAAAAAAAAAAAAQAAQAQAA=</HashCode>
+      <HashCode>AAAAICAAAIAIAAAAAAAgAAIAAAAgAAAAIAAQAAQAQAA=</HashCode>
       <FileName>USUARIO_BLL.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BLL.ACCESO_BLL">
     <Position X="4.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAQIEAAAAAICAAEAAACgAABhAgACAAAJAAIAAABAQA=</HashCode>
+      <HashCode>EAAAIEAAEAAICAAGAAACgAABhAgACAAAJAAYSAABAQI=</HashCode>
       <FileName>ACCESO_BLL.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -26,6 +26,13 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>PERMISOMAP_BLL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.DV_BLL">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAQAAAAAAAQAAAAAEA=</HashCode>
+      <FileName>DV_BLL.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

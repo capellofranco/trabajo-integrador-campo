@@ -52,6 +52,12 @@
     <Compile Include="FRMBitacora.Designer.cs">
       <DependentUpon>FRMBitacora.cs</DependentUpon>
     </Compile>
+    <Compile Include="FRMdv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRMdv.Designer.cs">
+      <DependentUpon>FRMdv.cs</DependentUpon>
+    </Compile>
     <Compile Include="FRMGestionRoles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FRMBitacora.resx">
       <DependentUpon>FRMBitacora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRMdv.resx">
+      <DependentUpon>FRMdv.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FRMGestionRoles.resx">
       <DependentUpon>FRMGestionRoles.cs</DependentUpon>

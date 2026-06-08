@@ -44,6 +44,7 @@ namespace BLL
                 var permisos = accesoBLL.ObtenerPermisosDeUsuario(usuario.Id);
                 SESSION_MANAGER.GetInstance.CargarPermisos(permisos);
                 bitacoraBLL.RegistrarEvento(usuario.Id, usuario.Username, "Seguridad","Login exitoso", "INFO");
+                //RecalcularDV();
                 return true;
             }
             else
@@ -66,7 +67,7 @@ namespace BLL
 
                 return false;
             }
-
+            
         }
         public void Logout()
         {
@@ -84,7 +85,7 @@ namespace BLL
                 var usuarioLogueado = SESSION_MANAGER.GetInstance.Usuario;
                 bitacoraBLL.RegistrarEvento(usuarioLogueado.Id, usuarioLogueado.Username, "Usuarios", $"Se registró al usuario: {nuevoUsuario.Username}", "INFO");
             }
-
+            RecalcularDV();
             return resultado;
         }
 
@@ -93,6 +94,7 @@ namespace BLL
             mapper.Desbloquear(nombreUsuario);
             var admin = SESSION_MANAGER.GetInstance.Usuario;
             bitacoraBLL.RegistrarEvento(admin.Id, admin.Username, "Seguridad",$"Admin desbloqueó al usuario: {nombreUsuario}", "INFO");
+            RecalcularDV();
         }
 
         public List<USUARIO> ObtenerUsuariosBloqueados()
@@ -108,6 +110,22 @@ namespace BLL
         public bool UsuarioTienePermiso(string nombrePermiso)
         {
             return SEC.SESSION_MANAGER.GetInstance.TienePermiso(nombrePermiso);
+        }
+
+        private void RecalcularDV()
+        {
+            new DV_BLL().RecalcularTodo();
+        }
+
+        public bool EsAdministrador()
+        {
+            var accesoBLL = new ACCESO_BLL();
+            return accesoBLL.TienePermiso(SESSION_MANAGER.GetInstance.Usuario.Id, "GestionarRoles");
+        }
+
+        public List<string> ObtenerPermisosUsuarioActual()
+        {
+            return new List<string>(SESSION_MANAGER.GetInstance.Permisos);
         }
     }
 }

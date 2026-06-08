@@ -15,9 +15,18 @@ namespace trabajo_integrador
     {
 
         USUARIO_BLL usubll = new USUARIO_BLL();
-        public Login()
+        private bool _soloAdmin;
+        public Login(bool soloAdmin = false)
         {
             InitializeComponent();
+            _soloAdmin = soloAdmin;
+
+            if (_soloAdmin)
+            {
+                lblAviso.Visible = true;
+                lblAviso.Text = "⚠️ Sistema restringido. Solo puede ingresar el Administrador.";
+                lblAviso.ForeColor = Color.Red;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -32,6 +41,21 @@ namespace trabajo_integrador
 
             if (login)
             {
+                if (_soloAdmin)
+                {
+                    bool esAdmin = usubll.EsAdministrador();
+
+                    if (!esAdmin)
+                    {
+                        MessageBox.Show(
+                            "El sistema está restringido por un error de integridad.\n" +
+                            "Solo el Administrador puede ingresar.",
+                            "Acceso restringido", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                        usubll.Logout();
+                        return;
+                    }
+                }
+
                 InterfazGeneral i = new InterfazGeneral();
                 i.Show();
                 this.Hide();
@@ -66,6 +90,11 @@ namespace trabajo_integrador
         {
             button1.BackColor = Color.White;
             button1.ForeColor = Color.Navy;
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
