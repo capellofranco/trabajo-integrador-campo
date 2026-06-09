@@ -45,9 +45,13 @@
     <Compile Include="ComponenteAcceso.cs" />
     <Compile Include="DIGITO_VERIFICADOR_VERTICAL.cs" />
     <Compile Include="HistoricoPrecio.cs" />
+    <Compile Include="IDIOMA.cs" />
+    <Compile Include="Observer.cs" />
     <Compile Include="PERMISO.cs" />
     <Compile Include="PRODUCTO.cs" />
     <Compile Include="ROL.cs" />
+    <Compile Include="Subject.cs" />
+    <Compile Include="TRADUCCION.cs" />
     <Compile Include="USUARIO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -48,6 +48,7 @@
     <Compile Include="MP_PERMISO.cs" />
     <Compile Include="MP_PRODUCTO.cs" />
     <Compile Include="MP_ROL.cs" />
+    <Compile Include="MP_TRADUCCION.cs" />
     <Compile Include="MP_USUARIO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

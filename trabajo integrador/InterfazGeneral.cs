@@ -1,4 +1,5 @@
-﻿using BLL;
+﻿using BE;
+using BLL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,9 +12,10 @@ using System.Windows.Forms;
 
 namespace trabajo_integrador
 {
-    public partial class InterfazGeneral : Form
+    public partial class InterfazGeneral : Form, Observer
     {
         BLL.USUARIO_BLL gestorusuario = new BLL.USUARIO_BLL();
+        private bool _cargandoCombo = true;
         public InterfazGeneral()
         {
             InitializeComponent();
@@ -21,9 +23,26 @@ namespace trabajo_integrador
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // 1. Cerramos la sesión del usuario actual
             gestorusuario.Logout();
-            this.Close();
-            Application.Restart();
+            TRADUCTOR_BLL.GetInstance().Eliminar(this); // Dejamos de observar
+
+            // 2. BUSCAMOS EL IDIOMA BASE (ESPAÑOL) Y RESETEAMOS EL SISTEMA
+            var idiomaBase = TRADUCTOR_BLL.GetInstance().ObtenerIdiomas().Find(i => i.Nombre.ToLower() == "español");
+            if (idiomaBase != null)
+            {
+                // Le pasamos 0 en el ID de usuario para que esto NO se guarde en la BD de nadie,
+                // solo cambia la interfaz temporalmente para el Login.
+                TRADUCTOR_BLL.GetInstance().CambiarIdioma(idiomaBase, 0);
+            }
+
+            this.Hide(); // Ocultamos la interfaz principal
+
+            // 3. Abrimos el login de nuevo. ¡Ahora va a arrancar en Español limpito!
+            Login log = new Login();
+            log.ShowDialog();
+
+            this.Close(); // Cerramos la app cuando terminen
         }
 
         private void registrarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -38,7 +57,18 @@ namespace trabajo_integrador
 
         private void InterfazGeneral_Load(object sender, EventArgs e)
         {
+            TRADUCTOR_BLL.GetInstance().Agregar(this);
 
+            cmbIdiomaGlobal.DataSource = TRADUCTOR_BLL.GetInstance().ObtenerIdiomas();
+            cmbIdiomaGlobal.DisplayMember = "Nombre";
+            cmbIdiomaGlobal.ValueMember = "IdIdioma";
+            var idiomaActual = TRADUCTOR_BLL.GetInstance().GetState();
+            if (idiomaActual != null)
+            {
+                cmbIdiomaGlobal.SelectedValue = idiomaActual.IdIdioma;
+            }
+            AgregarLenguaje();
+            _cargandoCombo = false;
         }
 
         private void AplicarVisibilidad()
@@ -113,14 +143,14 @@ namespace trabajo_integrador
 
         private void button1_MouseEnter(object sender, EventArgs e)
         {
-            button1.BackColor = Color.Navy;
-            button1.ForeColor = Color.White;
+            btnSalirInterfaz.BackColor = Color.Navy;
+            btnSalirInterfaz.ForeColor = Color.White;
         }
 
         private void button1_MouseLeave(object sender, EventArgs e)
         {
-            button1.BackColor = Color.White;
-            button1.ForeColor = Color.Navy;
+            btnSalirInterfaz.BackColor = Color.White;
+            btnSalirInterfaz.ForeColor = Color.Navy;
         }
 
         private void productoToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -157,6 +187,77 @@ namespace trabajo_integrador
         private void InterfazGeneral_Shown(object sender, EventArgs e)
         {
             this.BeginInvoke(new Action(() => AplicarVisibilidad()));
+        }
+        private void InterfazGeneral_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            TRADUCTOR_BLL.GetInstance().Eliminar(this);
+            Application.Exit();
+        }
+
+        public void AgregarLenguaje()
+        {
+            var idiomaActual = TRADUCTOR_BLL.GetInstance().GetState();
+            if (idiomaActual != null)
+            {
+                this.Text = TRADUCTOR_BLL.GetInstance().Traducir(this.Name, this.Text);
+                TraducirControles(this.Controls);
+                TraducirMenu(menuStrip1.Items); 
+            }
+        }
+
+        private void TraducirMenu(ToolStripItemCollection items)
+        {
+            foreach (ToolStripItem item in items)
+            {
+                item.Text = TRADUCTOR_BLL.GetInstance().Traducir(item.Name, item.Text);
+                if (item is ToolStripMenuItem menuItem)
+                {
+                    TraducirMenu(menuItem.DropDownItems);
+                }
+            }
+        }
+
+        private void TraducirControles(Control.ControlCollection controles)
+        {
+            foreach (Control c in controles)
+            {
+                // FILTRO CLAVE: Solo traducimos si NO es un control de ingreso de datos
+                if (!(c is TextBox) && !(c is ComboBox) && !(c is DateTimePicker) && !(c is NumericUpDown) && !(c is ListBox))
+                {
+                    c.Text = TRADUCTOR_BLL.GetInstance().Traducir(c.Name, c.Text);
+                }
+
+                // Las grillas se traducen aparte por sus columnas
+                if (c is DataGridView dgv)
+                {
+                    foreach (DataGridViewColumn col in dgv.Columns)
+                    {
+                        col.HeaderText = TRADUCTOR_BLL.GetInstance().Traducir(col.Name, col.HeaderText);
+                    }
+                }
+
+                // Si tiene paneles o groupbox, entra recursivamente
+                if (c.HasChildren)
+                {
+                    TraducirControles(c.Controls);
+                }
+            }
+        }
+
+        private void gestionIdiomaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FRMGestionIdiomas frm = new FRMGestionIdiomas();
+            frm.ShowDialog();
+        }
+
+        private void cmbIdiomaGlobal_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (!_cargandoCombo && cmbIdiomaGlobal.SelectedItem != null)
+            {
+                BE.IDIOMA nuevoIdioma = (BE.IDIOMA)cmbIdiomaGlobal.SelectedItem;
+                int idUsuarioActivo = gestorusuario.ObtenerIdUsuarioActivo();
+                TRADUCTOR_BLL.GetInstance().CambiarIdioma(nuevoIdioma, idUsuarioActivo);
+            }
         }
     }
 }

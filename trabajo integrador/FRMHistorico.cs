@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BE;
+using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +12,7 @@ using System.Windows.Forms;
 
 namespace trabajo_integrador
 {
-    public partial class FRMHistorico : Form
+    public partial class FRMHistorico : Form, Observer
     {
         BLL.PRODUCTO_BLL gestorProducto = new BLL.PRODUCTO_BLL();
 
@@ -26,17 +28,23 @@ namespace trabajo_integrador
 
         private void FRMHistorico_Load(object sender, EventArgs e)
         {
-            btnAtras.Enabled = false;
-            btnAdelante.Enabled = false;
-            btnRestaurar.Enabled = false;
+            TRADUCTOR_BLL.GetInstance().Agregar(this);
+            AgregarLenguaje();
+            btnAtrasHistorico.Enabled = false;
+            btnAdelanteHistorico.Enabled = false;
+            btnRestaurarHistorico.Enabled = false;
 
             CargarGrillaProductos();
+        }
+        private void FRMHistorico_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            TRADUCTOR_BLL.GetInstance().Eliminar(this);
         }
 
         private void CargarGrillaProductos()
         {
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = gestorProducto.ListarProductos();
+            dgwHistoricoProducto.DataSource = null;
+            dgwHistoricoProducto.DataSource = gestorProducto.ListarProductos();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -46,10 +54,10 @@ namespace trabajo_integrador
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && dataGridView1.CurrentRow != null)
+            if (e.RowIndex >= 0 && dgwHistoricoProducto.CurrentRow != null)
             {
-                idProductoSeleccionado = (int)dataGridView1.CurrentRow.Cells["ID"].Value;
-                nombreProductoSeleccionado = dataGridView1.CurrentRow.Cells["Nombre"].Value.ToString();
+                idProductoSeleccionado = (int)dgwHistoricoProducto.CurrentRow.Cells["ID"].Value;
+                nombreProductoSeleccionado = dgwHistoricoProducto.CurrentRow.Cells["Nombre"].Value.ToString();
                 CargarHistoriaDelProducto();
             }
         }
@@ -60,11 +68,11 @@ namespace trabajo_integrador
 
             if (listaHistoria == null || listaHistoria.Count == 0)
             {
-                lblPrecioInfo.Text = "Sin historial.";
-                lblAuditoria.Text = "";
-                btnAtras.Enabled = false;
-                btnAdelante.Enabled = false;
-                btnRestaurar.Enabled = false;
+                lblPrecioInfoHistorico.Text = "Sin historial.";
+                lblAuditoriaHistorico.Text = "";
+                btnAtrasHistorico.Enabled = false;
+                btnAdelanteHistorico.Enabled = false;
+                btnRestaurarHistorico.Enabled = false;
                 return;
             }
             indiceActual = listaHistoria.Count - 1;
@@ -75,11 +83,11 @@ namespace trabajo_integrador
         {
             var registro = listaHistoria[indiceActual];
 
-            lblPrecioInfo.Text = $"Precio Histórico: ${registro.Precio}";
-            lblAuditoria.Text = $"Fecha: {registro.FechaModificacion} | Por: {registro.NombreUsuario}";
-            btnAtras.Enabled = (indiceActual > 0);
-            btnAdelante.Enabled = (indiceActual < listaHistoria.Count - 1);
-            btnRestaurar.Enabled = (indiceActual != listaHistoria.Count - 1);
+            lblPrecioInfoHistorico.Text = $"Precio Histórico: ${registro.Precio}";
+            lblAuditoriaHistorico.Text = $"Fecha: {registro.FechaModificacion} | Por: {registro.NombreUsuario}";
+            btnAtrasHistorico.Enabled = (indiceActual > 0);
+            btnAdelanteHistorico.Enabled = (indiceActual < listaHistoria.Count - 1);
+            btnRestaurarHistorico.Enabled = (indiceActual != listaHistoria.Count - 1);
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -117,38 +125,80 @@ namespace trabajo_integrador
 
         private void btnAtras_MouseEnter(object sender, EventArgs e)
         {
-            btnAtras.BackColor = Color.Navy;
-            btnAtras.ForeColor = Color.White;
+            btnAtrasHistorico.BackColor = Color.Navy;
+            btnAtrasHistorico.ForeColor = Color.White;
         }
 
         private void btnAtras_MouseLeave(object sender, EventArgs e)
         {
-            btnAtras.BackColor = Color.White;
-            btnAtras.ForeColor = Color.Navy;
+            btnAtrasHistorico.BackColor = Color.White;
+            btnAtrasHistorico.ForeColor = Color.Navy;
         }
 
         private void btnRestaurar_MouseEnter(object sender, EventArgs e)
         {
-            btnRestaurar.BackColor = Color.Navy;
-            btnRestaurar.ForeColor = Color.White;
+            btnRestaurarHistorico.BackColor = Color.Navy;
+            btnRestaurarHistorico.ForeColor = Color.White;
         }
 
         private void btnRestaurar_MouseLeave(object sender, EventArgs e)
         {
-            btnRestaurar.BackColor = Color.White;
-            btnRestaurar.ForeColor = Color.Navy;
+            btnRestaurarHistorico.BackColor = Color.White;
+            btnRestaurarHistorico.ForeColor = Color.Navy;
         }
 
         private void btnAdelante_MouseEnter(object sender, EventArgs e)
         {
-            btnAdelante.BackColor = Color.Navy;
-            btnAdelante.ForeColor = Color.White;
+            btnAdelanteHistorico.BackColor = Color.Navy;
+            btnAdelanteHistorico.ForeColor = Color.White;
         }
 
         private void btnAdelante_MouseLeave(object sender, EventArgs e)
         {
-            btnAdelante.BackColor = Color.White;
-            btnAdelante.ForeColor = Color.Navy;
+            btnAdelanteHistorico.BackColor = Color.White;
+            btnAdelanteHistorico.ForeColor = Color.Navy;
+        }
+
+        public void AgregarLenguaje()
+        {
+            var idiomaActual = TRADUCTOR_BLL.GetInstance().GetState();
+            if (idiomaActual != null)
+            {
+                this.Text = TRADUCTOR_BLL.GetInstance().Traducir(this.Name, this.Text);
+                TraducirControles(this.Controls);
+            }
+        }
+
+        private void TraducirControles(Control.ControlCollection controles)
+        {
+            foreach (Control c in controles)
+            {
+                // FILTRO CLAVE: Solo traducimos si NO es un control de ingreso de datos
+                if (!(c is TextBox) && !(c is ComboBox) && !(c is DateTimePicker) && !(c is NumericUpDown) && !(c is ListBox))
+                {
+                    c.Text = TRADUCTOR_BLL.GetInstance().Traducir(c.Name, c.Text);
+                }
+
+                // Las grillas se traducen aparte por sus columnas
+                if (c is DataGridView dgv)
+                {
+                    foreach (DataGridViewColumn col in dgv.Columns)
+                    {
+                        col.HeaderText = TRADUCTOR_BLL.GetInstance().Traducir(col.Name, col.HeaderText);
+                    }
+                }
+
+                // Si tiene paneles o groupbox, entra recursivamente
+                if (c.HasChildren)
+                {
+                    TraducirControles(c.Controls);
+                }
+            }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

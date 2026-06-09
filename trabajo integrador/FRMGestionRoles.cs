@@ -1,4 +1,5 @@
-﻿using BLL;
+﻿using BE;
+using BLL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace trabajo_integrador
 {
-    public partial class FRMGestionRoles : Form
+    public partial class FRMGestionRoles : Form, Observer
     {
         private ACCESO_BLL _accesoBLL = new ACCESO_BLL();
         private USUARIO_BLL _usuarioBLL = new USUARIO_BLL();
@@ -45,7 +46,13 @@ namespace trabajo_integrador
 
         private void FRMGestionRoles_Load(object sender, EventArgs e)
         {
+            TRADUCTOR_BLL.GetInstance().Agregar(this);
+            AgregarLenguaje();
             CargarCombos();
+        }
+        private void FRMGestionRoles_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            TRADUCTOR_BLL.GetInstance().Eliminar(this);
         }
 
         private void cmbUsuario_SelectedIndexChanged(object sender, EventArgs e)
@@ -70,7 +77,7 @@ namespace trabajo_integrador
 
         private void CargarArbolUsuario()
         {
-            treeViewRoles.Nodes.Clear();
+            tvrGestionRoles.Nodes.Clear();
             if (cmbUsuario.SelectedItem == null) return;
             if (cmbUsuario.SelectedValue == null) return;
 
@@ -80,14 +87,14 @@ namespace trabajo_integrador
             
             var arboles = _accesoBLL.ObtenerArbolDeUsuario(idUsuario);
             foreach (var rol in arboles)
-                treeViewRoles.Nodes.Add(CrearNodoRecursivo(rol));
+                tvrGestionRoles.Nodes.Add(CrearNodoRecursivo(rol));
 
             
             var directos = _accesoBLL.ListarPermisosDirectosDeUsuario(idUsuario);
             foreach (var permiso in directos)
-                treeViewRoles.Nodes.Add(new TreeNode(permiso.Nombre));
+                tvrGestionRoles.Nodes.Add(new TreeNode(permiso.Nombre));
 
-            treeViewRoles.ExpandAll();
+            tvrGestionRoles.ExpandAll();
         }
 
         private TreeNode CrearNodoRecursivo(BE.ComponenteAcceso componente)
@@ -377,6 +384,43 @@ namespace trabajo_integrador
         {
             btnQuitarPermisoDirecto.BackColor = Color.White;
             btnQuitarPermisoDirecto.ForeColor = Color.Navy;
+        }
+
+        public void AgregarLenguaje()
+        {
+            var idiomaActual = TRADUCTOR_BLL.GetInstance().GetState();
+            if (idiomaActual != null)
+            {
+                this.Text = TRADUCTOR_BLL.GetInstance().Traducir(this.Name, this.Text);
+                TraducirControles(this.Controls);
+            }
+        }
+
+        private void TraducirControles(Control.ControlCollection controles)
+        {
+            foreach (Control c in controles)
+            {
+                // FILTRO CLAVE: Solo traducimos si NO es un control de ingreso de datos
+                if (!(c is TextBox) && !(c is ComboBox) && !(c is DateTimePicker) && !(c is NumericUpDown) && !(c is ListBox))
+                {
+                    c.Text = TRADUCTOR_BLL.GetInstance().Traducir(c.Name, c.Text);
+                }
+
+                // Las grillas se traducen aparte por sus columnas
+                if (c is DataGridView dgv)
+                {
+                    foreach (DataGridViewColumn col in dgv.Columns)
+                    {
+                        col.HeaderText = TRADUCTOR_BLL.GetInstance().Traducir(col.Name, col.HeaderText);
+                    }
+                }
+
+                // Si tiene paneles o groupbox, entra recursivamente
+                if (c.HasChildren)
+                {
+                    TraducirControles(c.Controls);
+                }
+            }
         }
     }
 }

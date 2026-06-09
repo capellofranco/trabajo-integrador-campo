@@ -12,7 +12,7 @@ using BLL;
 
 namespace trabajo_integrador
 {
-    public partial class FRMBitacora : Form
+    public partial class FRMBitacora : Form, Observer
     {
 
         BITACORA_BLL gestorbitacora = new BITACORA_BLL();
@@ -24,6 +24,9 @@ namespace trabajo_integrador
 
         private void FRMBitacora_Load(object sender, EventArgs e)
         {
+            TRADUCTOR_BLL.GetInstance().Agregar(this);
+            AgregarLenguaje();
+
             cmbCriticidad.Items.Clear();
             cmbCriticidad.Items.Add("Todos");
             cmbCriticidad.Items.Add("INFO");
@@ -50,27 +53,27 @@ namespace trabajo_integrador
                 objFiltros = new BE.BITACORA();
             }
 
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = gestorbitacora.ObtenerRegistros(objFiltros, desde, hasta);
+            dgvBitacora.DataSource = null;
+            dgvBitacora.DataSource = gestorbitacora.ObtenerRegistros(objFiltros, desde, hasta);
 
-            if (dataGridView1.Columns.Contains("IdBitacora"))
-                dataGridView1.Columns["IdBitacora"].Visible = false;
+            if (dgvBitacora.Columns.Contains("IdBitacora"))
+                dgvBitacora.Columns["IdBitacora"].Visible = false;
 
-            if (dataGridView1.Columns.Contains("IdUsuario"))
-                dataGridView1.Columns["IdUsuario"].Visible = false;
+            if (dgvBitacora.Columns.Contains("IdUsuario"))
+                dgvBitacora.Columns["IdUsuario"].Visible = false;
 
-            if (dataGridView1.Columns.Contains("FechaHora"))
-                dataGridView1.Columns["FechaHora"].HeaderText = "Fecha y Hora";
+            if (dgvBitacora.Columns.Contains("FechaHora"))
+                dgvBitacora.Columns["FechaHora"].HeaderText = "Fecha y Hora";
 
-            if (dataGridView1.Columns.Contains("NombreUsuario"))
-                dataGridView1.Columns["NombreUsuario"].HeaderText = "Usuario";
+            if (dgvBitacora.Columns.Contains("NombreUsuario"))
+                dgvBitacora.Columns["NombreUsuario"].HeaderText = "Usuario";
 
             FormatearGrilla();
         }
 
         private void FormatearGrilla()
         {
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            foreach (DataGridViewRow row in dgvBitacora.Rows)
             {
                 if (row.Cells["Criticidad"].Value != null)
                 {
@@ -109,6 +112,59 @@ namespace trabajo_integrador
                 objFiltros.Modulo = modulo;
             }
             CargarGrilla(objFiltros, dtpDesde.Value, dtpHasta.Value);
+        }
+
+        private void button2_MouseEnter(object sender, EventArgs e)
+        {
+            btnFiltrarBitacora.BackColor = Color.Navy;
+            btnFiltrarBitacora.ForeColor = Color.White;
+        }
+
+        private void button2_MouseLeave(object sender, EventArgs e)
+        {
+            btnFiltrarBitacora.BackColor = Color.White;
+            btnFiltrarBitacora.ForeColor = Color.Navy;
+        }
+        private void FRMBitacora_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            TRADUCTOR_BLL.GetInstance().Eliminar(this);
+        }
+
+        public void AgregarLenguaje()
+        {
+            var idiomaActual = TRADUCTOR_BLL.GetInstance().GetState();
+            if (idiomaActual != null)
+            {
+                this.Text = TRADUCTOR_BLL.GetInstance().Traducir(this.Name, this.Text); 
+                TraducirControles(this.Controls);
+            }
+        }
+
+        private void TraducirControles(Control.ControlCollection controles)
+        {
+            foreach (Control c in controles)
+            {
+                // FILTRO CLAVE: Solo traducimos si NO es un control de ingreso de datos
+                if (!(c is TextBox) && !(c is ComboBox) && !(c is DateTimePicker) && !(c is NumericUpDown) && !(c is ListBox))
+                {
+                    c.Text = TRADUCTOR_BLL.GetInstance().Traducir(c.Name, c.Text);
+                }
+
+                // Las grillas se traducen aparte por sus columnas
+                if (c is DataGridView dgv)
+                {
+                    foreach (DataGridViewColumn col in dgv.Columns)
+                    {
+                        col.HeaderText = TRADUCTOR_BLL.GetInstance().Traducir(col.Name, col.HeaderText);
+                    }
+                }
+
+                // Si tiene paneles o groupbox, entra recursivamente
+                if (c.HasChildren)
+                {
+                    TraducirControles(c.Controls);
+                }
+            }
         }
     }
 }

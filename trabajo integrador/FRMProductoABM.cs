@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BE;
+using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +12,7 @@ using System.Windows.Forms;
 
 namespace trabajo_integrador
 {
-    public partial class FRMProductoABM : Form
+    public partial class FRMProductoABM : Form, Observer
     {
         BLL.PRODUCTO_BLL gestorProducto = new BLL.PRODUCTO_BLL();
 
@@ -21,13 +23,19 @@ namespace trabajo_integrador
 
         private void FRMProductoABM_Load(object sender, EventArgs e)
         {
+            TRADUCTOR_BLL.GetInstance().Agregar(this);
+            AgregarLenguaje();
             CargarGrilla();
+        }
+        private void FRMProductoABM_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            TRADUCTOR_BLL.GetInstance().Eliminar(this);
         }
 
         private void CargarGrilla()
         {
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = gestorProducto.ListarProductos();
+            dgwProductoABM.DataSource = null;
+            dgwProductoABM.DataSource = gestorProducto.ListarProductos();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -72,7 +80,7 @@ namespace trabajo_integrador
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentRow == null)
+            if (dgwProductoABM.CurrentRow == null)
             {
                 MessageBox.Show("Seleccioná un producto de la grilla para modificar.");
                 return;
@@ -84,8 +92,8 @@ namespace trabajo_integrador
             }
             try
             {
-                int id = (int)dataGridView1.CurrentRow.Cells["ID"].Value;
-                string nombreActual = dataGridView1.CurrentRow.Cells["Nombre"].Value.ToString();
+                int id = (int)dgwProductoABM.CurrentRow.Cells["ID"].Value;
+                string nombreActual = dgwProductoABM.CurrentRow.Cells["Nombre"].Value.ToString();
                 gestorProducto.ModificarPrecio(id, nombreActual, precioValido);
                 MessageBox.Show("Precio modificado con éxito.");
                 CargarGrilla();
@@ -99,7 +107,7 @@ namespace trabajo_integrador
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentRow == null)
+            if (dgwProductoABM.CurrentRow == null)
             {
                 MessageBox.Show("Seleccioná un producto de la grilla para eliminar.");
                 return;
@@ -108,8 +116,8 @@ namespace trabajo_integrador
             try
             {
                 BE.PRODUCTO prod = new BE.PRODUCTO();
-                prod.ID = (int)dataGridView1.CurrentRow.Cells["ID"].Value;
-                prod.Nombre = dataGridView1.CurrentRow.Cells["Nombre"].Value.ToString();
+                prod.ID = (int)dgwProductoABM.CurrentRow.Cells["ID"].Value;
+                prod.Nombre = dgwProductoABM.CurrentRow.Cells["Nombre"].Value.ToString();
                 var confirmacion = MessageBox.Show($"¿Dar de baja el producto '{prod.Nombre}'?", "Confirmar baja", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (confirmacion == DialogResult.Yes)
                 {
@@ -127,46 +135,46 @@ namespace trabajo_integrador
 
         private void button2_MouseEnter(object sender, EventArgs e)
         {
-            button2.BackColor = Color.Navy;
-            button2.ForeColor = Color.White;
+            btnAgregarProducto.BackColor = Color.Navy;
+            btnAgregarProducto.ForeColor = Color.White;
         }
 
         private void button2_MouseLeave(object sender, EventArgs e)
         {
-            button2.BackColor = Color.White;
-            button2.ForeColor = Color.Navy;
+            btnAgregarProducto.BackColor = Color.White;
+            btnAgregarProducto.ForeColor = Color.Navy;
         }
 
         private void button1_MouseEnter(object sender, EventArgs e)
         {
-            button1.BackColor = Color.Navy;
-            button1.ForeColor = Color.White;
+            btnModificarProducto.BackColor = Color.Navy;
+            btnModificarProducto.ForeColor = Color.White;
         }
 
         private void button1_MouseLeave(object sender, EventArgs e)
         {
-            button1.BackColor = Color.White;
-            button1.ForeColor = Color.Navy;
+            btnModificarProducto.BackColor = Color.White;
+            btnModificarProducto.ForeColor = Color.Navy;
         }
 
         private void button3_MouseEnter(object sender, EventArgs e)
         {
-            button3.BackColor = Color.Navy;
-            button3.ForeColor = Color.White;
+            btnEliminarProducto.BackColor = Color.Navy;
+            btnEliminarProducto.ForeColor = Color.White;
         }
 
         private void button3_MouseLeave(object sender, EventArgs e)
         {
-            button3.BackColor = Color.White;
-            button3.ForeColor = Color.Navy;
+            btnEliminarProducto.BackColor = Color.White;
+            btnEliminarProducto.ForeColor = Color.Navy;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && dataGridView1.CurrentRow != null)
+            if (e.RowIndex >= 0 && dgwProductoABM.CurrentRow != null)
             {
-                txtNombre.Text = dataGridView1.CurrentRow.Cells["Nombre"].Value.ToString();
-                txtPrecio.Text = dataGridView1.CurrentRow.Cells["PrecioActual"].Value.ToString();
+                txtNombre.Text = dgwProductoABM.CurrentRow.Cells["Nombre"].Value.ToString();
+                txtPrecio.Text = dgwProductoABM.CurrentRow.Cells["PrecioActual"].Value.ToString();
             }
         }
 
@@ -194,6 +202,43 @@ namespace trabajo_integrador
             txtNombre.Clear();
             txtPrecio.Clear();
             txtNombre.Focus();
+        }
+
+        public void AgregarLenguaje()
+        {
+            var idiomaActual = TRADUCTOR_BLL.GetInstance().GetState();
+            if (idiomaActual != null)
+            {
+                this.Text = TRADUCTOR_BLL.GetInstance().Traducir(this.Name, this.Text);
+                TraducirControles(this.Controls);
+            }
+        }
+
+        private void TraducirControles(Control.ControlCollection controles)
+        {
+            foreach (Control c in controles)
+            {
+                // FILTRO CLAVE: Solo traducimos si NO es un control de ingreso de datos
+                if (!(c is TextBox) && !(c is ComboBox) && !(c is DateTimePicker) && !(c is NumericUpDown) && !(c is ListBox))
+                {
+                    c.Text = TRADUCTOR_BLL.GetInstance().Traducir(c.Name, c.Text);
+                }
+
+                // Las grillas se traducen aparte por sus columnas
+                if (c is DataGridView dgv)
+                {
+                    foreach (DataGridViewColumn col in dgv.Columns)
+                    {
+                        col.HeaderText = TRADUCTOR_BLL.GetInstance().Traducir(col.Name, col.HeaderText);
+                    }
+                }
+
+                // Si tiene paneles o groupbox, entra recursivamente
+                if (c.HasChildren)
+                {
+                    TraducirControles(c.Controls);
+                }
+            }
         }
     }
 }

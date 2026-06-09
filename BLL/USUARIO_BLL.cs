@@ -127,5 +127,25 @@ namespace BLL
         {
             return new List<string>(SESSION_MANAGER.GetInstance.Permisos);
         }
+        public int ObtenerIdUsuarioActivo()
+        {
+            if (SEC.SESSION_MANAGER.GetInstance.Usuario != null)
+            {
+                return SEC.SESSION_MANAGER.GetInstance.Usuario.Id;
+            }
+            throw new Exception("No hay un usuario logueado en la sesión.");
+        }
+        public int ObtenerIdActivo()
+        {
+            return SEC.SESSION_MANAGER.GetInstance.Usuario.Id;
+        }
+        public BE.USUARIO ObtenerUsuarioSesion()
+        {
+            if (SEC.SESSION_MANAGER.GetInstance.Usuario != null)
+            {
+                return SEC.SESSION_MANAGER.GetInstance.Usuario;
+            }
+            return null;
+        }
     }
 }

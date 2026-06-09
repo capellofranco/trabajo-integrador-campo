@@ -44,6 +44,7 @@ namespace DAL
 
             List<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Add(acceso.CrearParametro("@NombreUsuario", nombre));
+
             DataTable tabla = acceso.Leer("Login", parametros);
             acceso.Desconectar();
 
@@ -60,6 +61,7 @@ namespace DAL
             usuario.Password = fila["Password"].ToString();
             usuario.IntentosFallidos = int.Parse(fila["IntentosFallidos"].ToString());
             usuario.Bloqueado = int.Parse(fila["Bloqueado"].ToString());
+            usuario.IdIdioma = fila["IdIdioma"] != DBNull.Value ? int.Parse(fila["IdIdioma"].ToString()) : (int?)null;
 
             return usuario;
 

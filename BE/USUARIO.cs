@@ -57,8 +57,9 @@ namespace BE
 			set { dvh = value; }
 		}
 
+        public int? IdIdioma { get; set; }
 
 
 
-	}
+    }
 }

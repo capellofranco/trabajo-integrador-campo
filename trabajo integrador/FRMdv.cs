@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BE;
+using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +12,7 @@ using System.Windows.Forms;
 
 namespace trabajo_integrador
 {
-    public partial class FRMdv : Form
+    public partial class FRMdv : Form, Observer
     {
         private BLL.DV_BLL _dvBLL = new BLL.DV_BLL();
 
@@ -69,6 +71,77 @@ namespace trabajo_integrador
                     MessageBox.Show("Error al restaurar: " + ex.Message);
                 }
             }
+        }
+
+        private void btnVerificar_MouseEnter(object sender, EventArgs e)
+        {
+            btnVerificar.BackColor = Color.Navy;
+            btnVerificar.ForeColor = Color.White;
+        }
+
+        private void btnVerificar_MouseLeave(object sender, EventArgs e)
+        {
+            btnVerificar.BackColor = Color.White;
+            btnVerificar.ForeColor = Color.Navy;
+        }
+
+        private void btnRestaurar_MouseEnter(object sender, EventArgs e)
+        {
+            btnRestaurar.BackColor = Color.Navy;
+            btnRestaurar.ForeColor = Color.White;
+        }
+
+        private void btnRestaurar_MouseLeave(object sender, EventArgs e)
+        {
+            btnRestaurar.BackColor = Color.White;
+            btnRestaurar.ForeColor = Color.Navy;
+        }
+
+        public void AgregarLenguaje()
+        {
+            var idiomaActual = TRADUCTOR_BLL.GetInstance().GetState();
+            if (idiomaActual != null)
+            {
+                this.Text = TRADUCTOR_BLL.GetInstance().Traducir(this.Name, this.Text);
+                TraducirControles(this.Controls);
+            }
+        }
+
+        private void TraducirControles(Control.ControlCollection controles)
+        {
+            foreach (Control c in controles)
+            {
+                // FILTRO CLAVE: Solo traducimos si NO es un control de ingreso de datos
+                if (!(c is TextBox) && !(c is ComboBox) && !(c is DateTimePicker) && !(c is NumericUpDown) && !(c is ListBox))
+                {
+                    c.Text = TRADUCTOR_BLL.GetInstance().Traducir(c.Name, c.Text);
+                }
+
+                // Las grillas se traducen aparte por sus columnas
+                if (c is DataGridView dgv)
+                {
+                    foreach (DataGridViewColumn col in dgv.Columns)
+                    {
+                        col.HeaderText = TRADUCTOR_BLL.GetInstance().Traducir(col.Name, col.HeaderText);
+                    }
+                }
+
+                // Si tiene paneles o groupbox, entra recursivamente
+                if (c.HasChildren)
+                {
+                    TraducirControles(c.Controls);
+                }
+            }
+        }
+
+        private void FRMdv_Load(object sender, EventArgs e)
+        {
+            TRADUCTOR_BLL.GetInstance().Agregar(this);
+            AgregarLenguaje();
+        }
+        private void FRMdv_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            TRADUCTOR_BLL.GetInstance().Eliminar(this);
         }
     }
 }

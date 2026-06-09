@@ -1,4 +1,5 @@
-﻿using BLL;
+﻿using BE;
+using BLL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,11 +12,13 @@ using System.Windows.Forms;
 
 namespace trabajo_integrador
 {
-    public partial class Login : Form
+    public partial class Login : Form, Observer
     {
 
         USUARIO_BLL usubll = new USUARIO_BLL();
         private bool _soloAdmin;
+        private bool _cargandoCombo = true;
+        private bool _idiomaCambiadoManualmente = false;
         public Login(bool soloAdmin = false)
         {
             InitializeComponent();
@@ -26,6 +29,29 @@ namespace trabajo_integrador
                 lblAviso.Visible = true;
                 lblAviso.Text = "⚠️ Sistema restringido. Solo puede ingresar el Administrador.";
                 lblAviso.ForeColor = Color.Red;
+            }
+        }
+
+        public void AgregarLenguaje()
+        {
+            var idiomaActual = TRADUCTOR_BLL.GetInstance().GetState();
+            if (idiomaActual != null)
+            {
+                this.Text = TRADUCTOR_BLL.GetInstance().Traducir(this.Name, this.Text);
+                TraducirControles(this.Controls);
+            }
+        }
+
+        private void TraducirControles(Control.ControlCollection controles)
+        {
+            foreach (Control c in controles)
+            {
+                // Protegemos el combobox y los inputs para que no se sobreescriban
+                if (!(c is TextBox) && !(c is ComboBox))
+                {
+                    c.Text = TRADUCTOR_BLL.GetInstance().Traducir(c.Name, c.Text);
+                }
+                if (c.HasChildren) TraducirControles(c.Controls);
             }
         }
 
@@ -61,7 +87,7 @@ namespace trabajo_integrador
                 {
                     // Prioridad 1: El usuario cambió el combo a propósito en el login, se lo guardamos
                     TRADUCTOR_BLL.GetInstance().CambiarIdioma(idiomaElegido, idUsuarioLogueado);
-            }
+                }
                 else if (usuarioLogueado?.IdIdioma != null)
                 {
                     // Prioridad 2: No tocó el combo, pero tiene un idioma en la base. ¡Gana la base de datos!
@@ -72,8 +98,8 @@ namespace trabajo_integrador
                         TRADUCTOR_BLL.GetInstance().CambiarIdioma(idiomaGuardado, idUsuarioLogueado);
                     }
                 }
-            else
-            {
+                else
+                {
                     // Prioridad 3: No tocó nada y es un usuario nuevo, le damos el que esté en el combo
                     TRADUCTOR_BLL.GetInstance().CambiarIdioma(idiomaElegido, idUsuarioLogueado);
                 }
@@ -83,12 +109,12 @@ namespace trabajo_integrador
                 InterfazGeneral interfazPrincipal = new InterfazGeneral();
                 interfazPrincipal.Show();
                 this.Hide();
-                }
-                else
-                {
+            }
+            else
+            {
                 MessageBox.Show("Usuario o contraseña incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        
+
 
 
 
@@ -96,14 +122,14 @@ namespace trabajo_integrador
 
         private void button1_MouseEnter(object sender, EventArgs e)
         {
-            button1.BackColor = Color.Navy;
-            button1.ForeColor = Color.White;
+            btnIniciarSesion.BackColor = Color.Navy;
+            btnIniciarSesion.ForeColor = Color.White;
         }
 
         private void button1_MouseLeave(object sender, EventArgs e)
         {
-            button1.BackColor = Color.White;
-            button1.ForeColor = Color.Navy;
+            btnIniciarSesion.BackColor = Color.White;
+            btnIniciarSesion.ForeColor = Color.Navy;
         }
 
         private void Login_Load(object sender, EventArgs e)
