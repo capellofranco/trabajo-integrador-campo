@@ -44,12 +44,10 @@ namespace DAL
 
             List<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Add(acceso.CrearParametro("@NombreUsuario", nombre));
-  
-
             DataTable tabla = acceso.Leer("Login", parametros);
             acceso.Desconectar();
 
-            if(tabla.Rows.Count == 0)
+            if (tabla.Rows.Count == 0)
             {
                 return null;
             }
