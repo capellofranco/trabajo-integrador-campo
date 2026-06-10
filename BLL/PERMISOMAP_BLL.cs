@@ -7,18 +7,7 @@ namespace BLL
 {
     public static class PERMISOMAP_BLL
     {
-        //public static readonly Dictionary<string, string> MenuItems =
-        //    new Dictionary<string, string>
-        //    {
-        //        { "VerBitacora",           "bitacoraToolStripMenuItem1"       },
-        //        { "VerUsuariosBloqueados", "bloqueadosToolStripMenuItem"      },
-        //        { "RegistrarUsuario",      "usuarioToolStripMenuItem"       },
-        //        { "GestionarRoles",        "gestionRolesToolStripMenuItem"    },
-        //        { "VerProductos",          "productoToolStripMenuItem"        },
-        //        { "GestionProductos",      "productoToolStripMenuItem1"       },
-        //        { "VerHistorico",          "historicoToolStripMenuItem"       },
-        //        { "GestionarDV",           "digitoVerificadorToolStripMenuItem"},
-        //    };
+        
 
         public static readonly Dictionary<string, string> ItemsDirectos =
             new Dictionary<string, string>
@@ -27,9 +16,10 @@ namespace BLL
                 { "GestionarRoles",        "gestionRolesToolStripMenuItem"     },
                 { "VerProductos",          "productoToolStripMenuItem"         },
                 { "GestionarDV",           "digitoVerificadorToolStripMenuItem"},
+                { "VerIdiomas",            "gestionIdiomaToolStripMenuItem"    },
             };
 
-        // Items con padre: nombre del padre → lista de (permiso, texto, handler)
+       
         public static readonly Dictionary<string, List<(string Permiso, string Texto, string Handler)>> ItemsConPadre =
             new Dictionary<string, List<(string, string, string)>>
             {

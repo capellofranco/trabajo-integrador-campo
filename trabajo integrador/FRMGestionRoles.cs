@@ -112,17 +112,17 @@ namespace trabajo_integrador
             var permisos = _accesoBLL.ListarTodosLosPermisos();
             var usuarios = _usuarioBLL.ListarUsuarios();
 
-            // Rol para asignar permiso
+            
             cmbRolParaPermiso.DataSource = new List<BE.ROL>(roles);
             cmbRolParaPermiso.DisplayMember = "Nombre";
             cmbRolParaPermiso.ValueMember = "IdRol";
 
-            // Permiso disponible
+            
             cmbPermiso.DataSource = new List<BE.PERMISO>(permisos);
             cmbPermiso.DisplayMember = "Nombre";
             cmbPermiso.ValueMember = "IdPermiso";
 
-            // Rol padre / hijo para composite
+            
             cmbRolPadre.DataSource = new List<BE.ROL>(roles);
             cmbRolPadre.DisplayMember = "Nombre";
             cmbRolPadre.ValueMember = "IdRol";
@@ -131,17 +131,17 @@ namespace trabajo_integrador
             cmbRolHijo.DisplayMember = "Nombre";
             cmbRolHijo.ValueMember = "IdRol";
 
-            // Usuario (compartido para todas las secciones)
+            
             cmbUsuario.DataSource = new List<BE.USUARIO>(usuarios);
             cmbUsuario.DisplayMember = "Username";
             cmbUsuario.ValueMember = "Id";
 
-            // Rol para asignar a usuario
+            
             cmbRolUsuario.DataSource = new List<BE.ROL>(roles);
             cmbRolUsuario.DisplayMember = "Nombre";
             cmbRolUsuario.ValueMember = "IdRol";
 
-            // Permiso directo
+            
             cmbPermisoDirecto.DataSource = new List<BE.PERMISO>(permisos);
             cmbPermisoDirecto.DisplayMember = "Nombre";
             cmbPermisoDirecto.ValueMember = "IdPermiso";
@@ -400,13 +400,13 @@ namespace trabajo_integrador
         {
             foreach (Control c in controles)
             {
-                // FILTRO CLAVE: Solo traducimos si NO es un control de ingreso de datos
+                
                 if (!(c is TextBox) && !(c is ComboBox) && !(c is DateTimePicker) && !(c is NumericUpDown) && !(c is ListBox))
                 {
                     c.Text = TRADUCTOR_BLL.GetInstance().Traducir(c.Name, c.Text);
                 }
 
-                // Las grillas se traducen aparte por sus columnas
+                
                 if (c is DataGridView dgv)
                 {
                     foreach (DataGridViewColumn col in dgv.Columns)
@@ -415,7 +415,7 @@ namespace trabajo_integrador
                     }
                 }
 
-                // Si tiene paneles o groupbox, entra recursivamente
+                
                 if (c.HasChildren)
                 {
                     TraducirControles(c.Controls);

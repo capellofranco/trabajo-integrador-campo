@@ -23,26 +23,25 @@ namespace trabajo_integrador
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // 1. Cerramos la sesión del usuario actual
+            
             gestorusuario.Logout();
-            TRADUCTOR_BLL.GetInstance().Eliminar(this); // Dejamos de observar
+            TRADUCTOR_BLL.GetInstance().Eliminar(this); 
 
-            // 2. BUSCAMOS EL IDIOMA BASE (ESPAÑOL) Y RESETEAMOS EL SISTEMA
+            
             var idiomaBase = TRADUCTOR_BLL.GetInstance().ObtenerIdiomas().Find(i => i.Nombre.ToLower() == "español");
             if (idiomaBase != null)
             {
-                // Le pasamos 0 en el ID de usuario para que esto NO se guarde en la BD de nadie,
-                // solo cambia la interfaz temporalmente para el Login.
+                
                 TRADUCTOR_BLL.GetInstance().CambiarIdioma(idiomaBase, 0);
             }
 
-            this.Hide(); // Ocultamos la interfaz principal
+            this.Hide(); 
 
-            // 3. Abrimos el login de nuevo. ¡Ahora va a arrancar en Español limpito!
+            
             Login log = new Login();
             log.ShowDialog();
 
-            this.Close(); // Cerramos la app cuando terminen
+            this.Close(); 
         }
 
         private void registrarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -75,7 +74,7 @@ namespace trabajo_integrador
         {
             USUARIO_BLL usuarioBLL = new USUARIO_BLL();
 
-            // Items directos
+            
             foreach (var entry in PERMISOMAP_BLL.ItemsDirectos)
             {
                 var item = menuStrip1.Items.Find(entry.Value, true);
@@ -83,7 +82,7 @@ namespace trabajo_integrador
                     item[0].Visible = usuarioBLL.UsuarioTienePermiso(entry.Key);
             }
 
-            // Items con padre
+            
             foreach (var grupo in PERMISOMAP_BLL.ItemsConPadre)
             {
                 var padreItem = menuStrip1.Items.Find(grupo.Key, true);
@@ -221,13 +220,13 @@ namespace trabajo_integrador
         {
             foreach (Control c in controles)
             {
-                // FILTRO CLAVE: Solo traducimos si NO es un control de ingreso de datos
+                
                 if (!(c is TextBox) && !(c is ComboBox) && !(c is DateTimePicker) && !(c is NumericUpDown) && !(c is ListBox))
                 {
                     c.Text = TRADUCTOR_BLL.GetInstance().Traducir(c.Name, c.Text);
                 }
 
-                // Las grillas se traducen aparte por sus columnas
+                
                 if (c is DataGridView dgv)
                 {
                     foreach (DataGridViewColumn col in dgv.Columns)
@@ -236,7 +235,7 @@ namespace trabajo_integrador
                     }
                 }
 
-                // Si tiene paneles o groupbox, entra recursivamente
+                
                 if (c.HasChildren)
                 {
                     TraducirControles(c.Controls);

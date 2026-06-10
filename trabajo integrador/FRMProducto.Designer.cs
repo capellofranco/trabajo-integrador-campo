@@ -36,30 +36,35 @@
             // dgwProductos
             // 
             this.dgwProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwProductos.Location = new System.Drawing.Point(37, 94);
+            this.dgwProductos.Location = new System.Drawing.Point(49, 116);
+            this.dgwProductos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgwProductos.Name = "dgwProductos";
-            this.dgwProductos.Size = new System.Drawing.Size(408, 272);
+            this.dgwProductos.RowHeadersWidth = 51;
+            this.dgwProductos.Size = new System.Drawing.Size(544, 335);
             this.dgwProductos.TabIndex = 0;
+            this.dgwProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwProductos_CellContentClick);
             // 
             // lblProductos
             // 
             this.lblProductos.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProductos.ForeColor = System.Drawing.Color.White;
-            this.lblProductos.Location = new System.Drawing.Point(96, 35);
+            this.lblProductos.Location = new System.Drawing.Point(128, 43);
+            this.lblProductos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProductos.Name = "lblProductos";
-            this.lblProductos.Size = new System.Drawing.Size(300, 36);
+            this.lblProductos.Size = new System.Drawing.Size(400, 44);
             this.lblProductos.TabIndex = 10;
             this.lblProductos.Text = "PRODUCTOS";
             this.lblProductos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FRMProducto
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(482, 400);
+            this.ClientSize = new System.Drawing.Size(643, 492);
             this.Controls.Add(this.lblProductos);
             this.Controls.Add(this.dgwProductos);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FRMProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FRMProducto";

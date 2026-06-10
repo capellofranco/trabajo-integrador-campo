@@ -33,7 +33,7 @@ namespace trabajo_integrador
             BE.IDIOMA idiomaSel = (BE.IDIOMA)cmbIdiomasEditar.SelectedItem;
             List<BE.TRADUCCION> listaTraducciones = new List<BE.TRADUCCION>();
 
-            // Recorremos la grilla y guardamos todo
+            
             foreach (DataGridViewRow row in dgvTraducciones.Rows)
             {
                 if (!row.IsNewRow && row.Cells[0].Value != null)
@@ -53,12 +53,12 @@ namespace trabajo_integrador
                 }
             }
 
-            // Enviamos la lista a la BLL
+            
             TRADUCTOR_BLL.GetInstance().GuardarTraducciones(listaTraducciones);
 
             MessageBox.Show("Traducciones actualizadas correctamente.");
 
-            // Si editaste el idioma actual, lo refresca en tiempo real
+            
             if (TRADUCTOR_BLL.GetInstance().GetState().IdIdioma == idiomaSel.IdIdioma)
             {
                 TRADUCTOR_BLL.GetInstance().CambiarIdioma(idiomaSel, new USUARIO_BLL().ObtenerIdUsuarioActivo());

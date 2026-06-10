@@ -144,13 +144,13 @@ namespace trabajo_integrador
         {
             foreach (Control c in controles)
             {
-                // FILTRO CLAVE: Solo traducimos si NO es un control de ingreso de datos
+                
                 if (!(c is TextBox) && !(c is ComboBox) && !(c is DateTimePicker) && !(c is NumericUpDown) && !(c is ListBox))
                 {
                     c.Text = TRADUCTOR_BLL.GetInstance().Traducir(c.Name, c.Text);
                 }
 
-                // Las grillas se traducen aparte por sus columnas
+                
                 if (c is DataGridView dgv)
                 {
                     foreach (DataGridViewColumn col in dgv.Columns)
@@ -159,7 +159,7 @@ namespace trabajo_integrador
                     }
                 }
 
-                // Si tiene paneles o groupbox, entra recursivamente
+                
                 if (c.HasChildren)
                 {
                     TraducirControles(c.Controls);

@@ -44,7 +44,7 @@ namespace BLL
                 var permisos = accesoBLL.ObtenerPermisosDeUsuario(usuario.Id);
                 SESSION_MANAGER.GetInstance.CargarPermisos(permisos);
                 bitacoraBLL.RegistrarEvento(usuario.Id, usuario.Username, "Seguridad","Login exitoso", "INFO");
-                //RecalcularDV();
+                
                 return true;
             }
             else

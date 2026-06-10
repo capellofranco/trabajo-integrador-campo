@@ -46,7 +46,7 @@ namespace trabajo_integrador
         {
             foreach (Control c in controles)
             {
-                // Protegemos el combobox y los inputs para que no se sobreescriban
+                
                 if (!(c is TextBox) && !(c is ComboBox))
                 {
                     c.Text = TRADUCTOR_BLL.GetInstance().Traducir(c.Name, c.Text);
@@ -82,15 +82,15 @@ namespace trabajo_integrador
                 var usuarioLogueado = usubll.ObtenerUsuarioSesion();
                 BE.IDIOMA idiomaElegido = (BE.IDIOMA)cmbIdiomas.SelectedItem;
 
-                // LÓGICA DE PRIORIDADES AL INICIAR SESIÓN
+                
                 if (_idiomaCambiadoManualmente)
                 {
-                    // Prioridad 1: El usuario cambió el combo a propósito en el login, se lo guardamos
+                    
                     TRADUCTOR_BLL.GetInstance().CambiarIdioma(idiomaElegido, idUsuarioLogueado);
                 }
                 else if (usuarioLogueado?.IdIdioma != null)
                 {
-                    // Prioridad 2: No tocó el combo, pero tiene un idioma en la base. ¡Gana la base de datos!
+                    
                     var idiomasDisponibles = TRADUCTOR_BLL.GetInstance().ObtenerIdiomas();
                     var idiomaGuardado = idiomasDisponibles.Find(x => x.IdIdioma == usuarioLogueado.IdIdioma.Value);
                     if (idiomaGuardado != null)
@@ -100,11 +100,11 @@ namespace trabajo_integrador
                 }
                 else
                 {
-                    // Prioridad 3: No tocó nada y es un usuario nuevo, le damos el que esté en el combo
+                    
                     TRADUCTOR_BLL.GetInstance().CambiarIdioma(idiomaElegido, idUsuarioLogueado);
                 }
 
-                TRADUCTOR_BLL.GetInstance().Eliminar(this); // Limpiamos memoria
+                TRADUCTOR_BLL.GetInstance().Eliminar(this); 
 
                 InterfazGeneral interfazPrincipal = new InterfazGeneral();
                 interfazPrincipal.Show();
@@ -159,10 +159,10 @@ namespace trabajo_integrador
         {
             if (!_cargandoCombo && cmbIdiomas.SelectedItem != null && cmbIdiomas.Focused)
             {
-                _idiomaCambiadoManualmente = true; // El usuario forzó un idioma
+                _idiomaCambiadoManualmente = true; 
                 BE.IDIOMA nuevoIdioma = (BE.IDIOMA)cmbIdiomas.SelectedItem;
 
-                // Pasamos 0 porque todavía no se logueó nadie
+                
                 TRADUCTOR_BLL.GetInstance().CambiarIdioma(nuevoIdioma, 0);
             }
         }

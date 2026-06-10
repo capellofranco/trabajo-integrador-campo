@@ -41,10 +41,10 @@ namespace BLL
 
             if (componente is BE.ROL rol)
                 foreach (var hijo in rol.Hijos)
-                    ObtenerPermisosRecursivos(hijo, acumulador); // RECURSIVO
+                    ObtenerPermisosRecursivos(hijo, acumulador); 
         }
 
-        // ── Consultas públicas ────────────────────────────────────────────
+        
 
         public List<BE.ROL> ObtenerArbolDeUsuario(int idUsuario)
         {
@@ -74,7 +74,7 @@ namespace BLL
         public bool TienePermiso(int idUsuario, string nombrePermiso)
             => ObtenerPermisosDeUsuario(idUsuario).Contains(nombrePermiso);
 
-        // ── Gestión de Roles ──────────────────────────────────────────────
+        
 
         public List<BE.ROL> ListarRoles() => _mpRol.Listar();
 
@@ -86,7 +86,7 @@ namespace BLL
             RegistrarAuditoria($"Se creó un nuevo rol: {nombre}");
         }
 
-        // ── Gestión de Permisos en Roles ──────────────────────────────────
+        
 
         public List<BE.PERMISO> ListarTodosLosPermisos() => _mpPermiso.Listar();
 
@@ -102,7 +102,7 @@ namespace BLL
             RegistrarAuditoria($"Se quitó el permiso '{ObtenerNombrePermiso(idPermiso)}' del rol '{ObtenerNombreRol(idRol)}'");
         }
 
-        // ── Asignación Usuario ↔ Rol ──────────────────────────────────────
+        
 
         public void AsignarRolAUsuario(int idUsuario, int idRol)
         {
@@ -119,7 +119,7 @@ namespace BLL
             RegistrarAuditoria($"Se quitó el rol '{ObtenerNombreRol(idRol)}' al usuario '{ObtenerNombreUsuario(idUsuario)}'");
         }
 
-        // ── Sub-roles por usuario ─────────────────────────────────────────
+        
 
         public void AgregarSubRolAUsuario(int idUsuario, int idPadre, int idHijo)
         {
@@ -150,7 +150,7 @@ namespace BLL
             return false;
         }
 
-        // ── Permisos directos de usuario ──────────────────────────────────
+        
 
         public List<BE.PERMISO> ListarPermisosDirectosDeUsuario(int idUsuario)
             => _mpPermiso.ListarPermisosDirectosDeUsuario(idUsuario);
