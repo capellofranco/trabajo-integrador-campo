@@ -55,6 +55,7 @@ namespace BLL
                 _mpTraduccion.ActualizarIdiomaUsuario(idUsuarioActivo, nuevoIdioma.IdIdioma);
             }
             _traduccionesActuales = _mpTraduccion.ObtenerTraduccionesPorIdioma(nuevoIdioma.IdIdioma);
+            RegistrarLog($"El usuario cambió el idioma de la interfaz a: {nuevoIdioma.Nombre}");
             Notify();
         }
 
@@ -107,10 +108,12 @@ namespace BLL
                 t.IdIdioma = nuevo.IdIdioma;
                 _mpTraduccion.GuardarTraduccion(t);
             }
+            RegistrarLog($"Se creó el idioma '{nombreIdioma}' junto con un lote de {traducciones.Count} traducciones iniciales");
         }
         public void CrearNuevoIdioma(string nombre)
         {
             _mpTraduccion.InsertarIdioma(nombre);
+            RegistrarLog($"Se creó el nuevo idioma en el sistema: {nombre}");
         }
 
         public Dictionary<string, string> ObtenerTraduccionesDelIdioma(int idIdioma)
@@ -123,6 +126,23 @@ namespace BLL
             foreach (var t in traducciones)
             {
                 _mpTraduccion.GuardarTraduccion(t);
+            }
+            RegistrarLog($"Se actualizaron/guardaron {traducciones.Count} traducciones en la base de datos");
+        }
+        private void RegistrarLog(string accion, string criticidad = "INFO")
+        {
+            try
+            {
+                USUARIO_BLL usuBll = new USUARIO_BLL();
+                var usuarioActivo = usuBll.ObtenerUsuarioSesion();
+                int? idUsu = usuarioActivo != null ? usuarioActivo.Id : (int?)null;
+                string nombreUsu = usuarioActivo != null ? usuarioActivo.Username : "Sistema";
+                BITACORA_BLL bitacoraBll = new BITACORA_BLL();
+                bitacoraBll.RegistrarEvento(idUsu, nombreUsu, "Gestión de Idiomas", accion, criticidad);
+            }
+            catch
+            {
+                
             }
         }
 

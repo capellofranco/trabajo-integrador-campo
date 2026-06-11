@@ -41,6 +41,7 @@ namespace trabajo_integrador
             cmbModulo.Items.Add("Gestión Roles");
             cmbModulo.Items.Add("Productos");
             cmbModulo.Items.Add("Control de Cambios");
+            cmbModulo.Items.Add("Gestión de Idiomas");
             cmbModulo.SelectedIndex = 0;
 
             CargarGrilla();
