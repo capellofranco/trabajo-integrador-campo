@@ -1,46 +1,88 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="BE.BITACORA">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Position X="8" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAQAAAAAAAAAAAIAIAAAAIAAAAAAAIAACAAAAAQ=</HashCode>
       <FileName>BITACORA.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BE.USUARIO">
-    <Position X="2.25" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AQACAAAAAAAAgAAAAYAAAAEgCAAAAAACAQAAAgAAAgA=</HashCode>
-      <FileName>USUARIO.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="BE.ComponenteAcceso">
-    <Position X="4.5" Y="0.5" Width="1.5" />
+    <Position X="1.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAgAABAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ComponenteAcceso.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BE.PERMISO">
-    <Position X="4" Y="3" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
-      <FileName>PERMISO.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="BE.ROL">
-    <Position X="6.5" Y="3" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAIAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ROL.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="BE.DIGITO_VERIFICADOR_VERTICAL">
-    <Position X="6.75" Y="0.5" Width="1.5" />
+    <Position X="0.5" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAQAgAAAAIAA=</HashCode>
       <FileName>DIGITO_VERIFICADOR_VERTICAL.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="BE.HistoricoPrecio">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACQAAAAAgAAAAAAAAAAQAAAAAAAAAIAAAACAAAA=</HashCode>
+      <FileName>HistoricoPrecio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.IDIOMA">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IDIOMA.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.PERMISO">
+    <Position X="2.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>PERMISO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.PRODUCTO">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAgAAAAAAAgAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>PRODUCTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.ROL">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ROL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.TRADUCCION">
+    <Position X="6.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAEAAQAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TRADUCCION.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.USUARIO">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACAAAAAAAAgAQAAYAAAAEgCAAAAAACAQAAAgAAAgA=</HashCode>
+      <FileName>USUARIO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="BE.Observer">
+    <Position X="5.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Observer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BE.Subject">
+    <Position X="7.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAQAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Subject.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

@@ -64,7 +64,7 @@ namespace BLL
                 {
                     bitacoraBLL.RegistrarEvento(usuario.Id, usuario.Username, "Seguridad",$"Contraseña incorrecta (intento {intentos}/3)", "WARNING");
                 }
-
+                RecalcularDV();
                 return false;
             }
             

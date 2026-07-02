@@ -21,21 +21,9 @@ namespace trabajo_integrador
             var errores = dvBLL.VerificarIntegridad();
 
             if (errores.Count > 0)
-            {
-                string mensaje = "⚠️ Se detectaron problemas de integridad en la base de datos:\n\n"
-                               + string.Join("\n", errores)
-                               + "\n\nSolo el Administrador puede ingresar al sistema.";
-
-                Login loginRestringido = new Login(soloAdmin: true);
-                loginRestringido.Show();
-                MessageBox.Show(loginRestringido, mensaje, "Error de integridad",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Application.Run(loginRestringido);
-            }
+                Application.Run(new Login(soloAdmin: true));
             else
-            {
                 Application.Run(new Login(soloAdmin: false));
-            }
         }
     }
 }
