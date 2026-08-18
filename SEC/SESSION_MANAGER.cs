@@ -80,7 +80,19 @@ namespace SEC
             }
         }
 
+        private List<string> _permisos = new List<string>();
 
+        public IReadOnlyList<string> Permisos => _permisos.AsReadOnly();
+
+        public void CargarPermisos(List<string> permisos)
+        {
+            _permisos = permisos;
+        }
+
+        public bool TienePermiso(string nombrePermiso)
+        {
+            return _permisos.Contains(nombrePermiso);
+        }
 
 
 

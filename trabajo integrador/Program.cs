@@ -16,7 +16,14 @@ namespace trabajo_integrador
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+
+            var dvBLL = new BLL.DV_BLL();
+            var errores = dvBLL.VerificarIntegridad();
+
+            if (errores.Count > 0)
+                Application.Run(new Login(soloAdmin: true));
+            else
+                Application.Run(new Login(soloAdmin: false));
         }
     }
 }

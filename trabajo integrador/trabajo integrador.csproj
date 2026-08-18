@@ -52,11 +52,53 @@
     <Compile Include="FRMBitacora.Designer.cs">
       <DependentUpon>FRMBitacora.cs</DependentUpon>
     </Compile>
+    <Compile Include="FRMdv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRMdv.Designer.cs">
+      <DependentUpon>FRMdv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRMGestionIdiomas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRMGestionIdiomas.Designer.cs">
+      <DependentUpon>FRMGestionIdiomas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRMGestionRoles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRMGestionRoles.Designer.cs">
+      <DependentUpon>FRMGestionRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRMHistorico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRMHistorico.Designer.cs">
+      <DependentUpon>FRMHistorico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRMProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRMProducto.Designer.cs">
+      <DependentUpon>FRMProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRMProductoABM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRMProductoABM.Designer.cs">
+      <DependentUpon>FRMProductoABM.cs</DependentUpon>
+    </Compile>
     <Compile Include="FRMRegistrar.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FRMRegistrar.Designer.cs">
       <DependentUpon>FRMRegistrar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRMUsuariosBloqueados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRMUsuariosBloqueados.Designer.cs">
+      <DependentUpon>FRMUsuariosBloqueados.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -75,8 +117,29 @@
     <EmbeddedResource Include="FRMBitacora.resx">
       <DependentUpon>FRMBitacora.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FRMdv.resx">
+      <DependentUpon>FRMdv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRMGestionIdiomas.resx">
+      <DependentUpon>FRMGestionIdiomas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRMGestionRoles.resx">
+      <DependentUpon>FRMGestionRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRMHistorico.resx">
+      <DependentUpon>FRMHistorico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRMProducto.resx">
+      <DependentUpon>FRMProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRMProductoABM.resx">
+      <DependentUpon>FRMProductoABM.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FRMRegistrar.resx">
       <DependentUpon>FRMRegistrar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRMUsuariosBloqueados.resx">
+      <DependentUpon>FRMUsuariosBloqueados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InterfazGeneral.resx">
       <DependentUpon>InterfazGeneral.cs</DependentUpon>

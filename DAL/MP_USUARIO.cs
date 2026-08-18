@@ -44,12 +44,11 @@ namespace DAL
 
             List<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Add(acceso.CrearParametro("@NombreUsuario", nombre));
-  
 
             DataTable tabla = acceso.Leer("Login", parametros);
             acceso.Desconectar();
 
-            if(tabla.Rows.Count == 0)
+            if (tabla.Rows.Count == 0)
             {
                 return null;
             }
@@ -60,9 +59,77 @@ namespace DAL
             usuario.Id = int.Parse(fila["ID"].ToString());
             usuario.Username = fila["NombreUsuario"].ToString();
             usuario.Password = fila["Password"].ToString();
+            usuario.IntentosFallidos = int.Parse(fila["IntentosFallidos"].ToString());
+            usuario.Bloqueado = int.Parse(fila["Bloqueado"].ToString());
+            usuario.IdIdioma = fila["IdIdioma"] != DBNull.Value ? int.Parse(fila["IdIdioma"].ToString()) : (int?)null;
 
             return usuario;
 
+        }
+
+
+        public void IncrementarIntentosFallidos(string nombreUsuario)
+        {
+            acceso.Conectar();
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(acceso.CrearParametro("@NombreUsuario", nombreUsuario));
+            acceso.Escribir("IncrementarIntentosFallidos", parametros);
+            acceso.Desconectar();
+        }
+
+        public void ResetearIntentos(string nombreUsuario)
+        {
+            acceso.Conectar();
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(acceso.CrearParametro("@NombreUsuario", nombreUsuario));
+            acceso.Escribir("ResetearIntentos", parametros);
+            acceso.Desconectar();
+        }
+
+        public void Desbloquear(string nombreUsuario)
+        {
+            acceso.Conectar();
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(acceso.CrearParametro("@NombreUsuario", nombreUsuario));
+            acceso.Escribir("DesbloquearUsuario", parametros);
+            acceso.Desconectar();
+        }
+
+        public List<USUARIO> ListarBloqueados()
+        {
+            acceso.Conectar();
+            DataTable tabla = acceso.Leer("ListarUsuariosBloqueados", null);
+            acceso.Desconectar();
+
+            List<USUARIO> lista = new List<USUARIO>();
+            foreach (DataRow fila in tabla.Rows)
+            {
+                lista.Add(new USUARIO
+                {
+                    Id = int.Parse(fila["ID"].ToString()),
+                    Username = fila["NombreUsuario"].ToString(),
+                    IntentosFallidos = int.Parse(fila["IntentosFallidos"].ToString()),
+                    Bloqueado = int.Parse(fila["Bloqueado"].ToString())
+                });
+            }
+            return lista;
+        }
+
+        public List<BE.USUARIO> ListarTodos()
+        {
+            acceso.Conectar();
+            DataTable tabla = acceso.Leer("ListarUsuarios", null);
+            acceso.Desconectar();
+            var lista = new List<BE.USUARIO>();
+            foreach (DataRow fila in tabla.Rows)
+            {
+                lista.Add(new BE.USUARIO
+                {
+                    Id = int.Parse(fila["ID"].ToString()),
+                    Username = fila["NombreUsuario"].ToString()
+                });
+            }
+            return lista;
         }
     }
 }
