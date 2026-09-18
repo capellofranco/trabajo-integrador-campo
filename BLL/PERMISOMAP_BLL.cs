@@ -36,6 +36,15 @@ namespace BLL
                         ("RegistrarUsuario", "Usuario", "usuarioToolStripMenuItem_Click"),
                         ("GestionProductos", "Producto","productoToolStripMenuItem1_Click")
                     }
+                },
+                {
+                    "paqueteDeViajesToolStripMenuItem_Click", new List<(string, string, string)>
+                    {
+                        ("VerPaquetes",       "Ver Paquetes",      "verPaquetesToolStripMenuItem_Click"),
+                        ("GestionarPaquetes", "Gestion Paquetes",  "gestionPaquetesToolStripMenuItem_Click"),
+                        ("RealizarReserva",   "Mis Reservas",      "misPaquetesToolStripMenuItem_Click"),
+                        ("GestionarReservas", "Gestion Reservas",  "gestionReservaToolStripMenuItem_Click")
+                    }
                 }
             };
     }

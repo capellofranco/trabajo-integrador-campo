@@ -43,9 +43,12 @@
   <ItemGroup>
     <Compile Include="ACCESO_BLL.cs" />
     <Compile Include="BITACORA_BLL.cs" />
+    <Compile Include="CLIENTE_PERFIL_BLL.cs" />
     <Compile Include="DV_BLL.cs" />
+    <Compile Include="PAQUETE_BLL.cs" />
     <Compile Include="PERMISOMAP_BLL.cs" />
     <Compile Include="PRODUCTO_BLL.cs" />
+    <Compile Include="RESERVA_BLL.cs" />
     <Compile Include="TRADUCTOR_BLL.cs" />
     <Compile Include="USUARIO_BLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

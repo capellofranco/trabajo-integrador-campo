@@ -135,6 +135,8 @@ namespace BLL
             }
             throw new Exception("No hay un usuario logueado en la sesión.");
         }
+
+        
         public int ObtenerIdActivo()
         {
             return SEC.SESSION_MANAGER.GetInstance.Usuario.Id;

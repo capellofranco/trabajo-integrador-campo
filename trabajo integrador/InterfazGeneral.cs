@@ -185,8 +185,14 @@ namespace trabajo_integrador
 
         private void InterfazGeneral_Shown(object sender, EventArgs e)
         {
-            this.BeginInvoke(new Action(() => AplicarVisibilidad()));
+            this.BeginInvoke(new Action(() =>
+            {
+                AplicarVisibilidad();
+            }));
         }
+        
+
+
         private void InterfazGeneral_FormClosed(object sender, FormClosedEventArgs e)
         {
             TRADUCTOR_BLL.GetInstance().Eliminar(this);
@@ -257,6 +263,35 @@ namespace trabajo_integrador
                 int idUsuarioActivo = gestorusuario.ObtenerIdUsuarioActivo();
                 TRADUCTOR_BLL.GetInstance().CambiarIdioma(nuevoIdioma, idUsuarioActivo);
             }
+        }
+
+        private void verPaquetesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FRMVerPaquetes frm = new FRMVerPaquetes();
+            frm.ShowDialog();
+        }
+
+        private void gestionPaquetesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FRMGestionPaquetes frm = new FRMGestionPaquetes();
+            frm.ShowDialog();
+        }
+
+        private void misPaquetesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FRMReservas frm = new FRMReservas();
+            frm.ShowDialog();
+        }
+
+        private void gestionReservaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FRMReservas frm = new FRMReservas();
+            frm.ShowDialog();
+        }
+
+        private void paqueteDeViajesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

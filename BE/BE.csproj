@@ -42,14 +42,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BITACORA.cs" />
+    <Compile Include="CLIENTE_PERFIL.cs" />
     <Compile Include="ComponenteAcceso.cs" />
     <Compile Include="DIGITO_VERIFICADOR_VERTICAL.cs" />
     <Compile Include="HistoricoPrecio.cs" />
     <Compile Include="IDIOMA.cs" />
     <Compile Include="Observer.cs" />
+    <Compile Include="PAGO.cs" />
+    <Compile Include="PAQUETE.cs" />
     <Compile Include="PERMISO.cs" />
     <Compile Include="PRODUCTO.cs" />
+    <Compile Include="RESERVA.cs" />
     <Compile Include="ROL.cs" />
+    <Compile Include="SERVICIO.cs" />
     <Compile Include="Subject.cs" />
     <Compile Include="TRADUCCION.cs" />
     <Compile Include="USUARIO.cs" />

@@ -52,6 +52,12 @@
     <Compile Include="FRMBitacora.Designer.cs">
       <DependentUpon>FRMBitacora.cs</DependentUpon>
     </Compile>
+    <Compile Include="FRMCompletarPerfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRMCompletarPerfil.Designer.cs">
+      <DependentUpon>FRMCompletarPerfil.cs</DependentUpon>
+    </Compile>
     <Compile Include="FRMdv.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +69,12 @@
     </Compile>
     <Compile Include="FRMGestionIdiomas.Designer.cs">
       <DependentUpon>FRMGestionIdiomas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRMGestionPaquetes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRMGestionPaquetes.Designer.cs">
+      <DependentUpon>FRMGestionPaquetes.cs</DependentUpon>
     </Compile>
     <Compile Include="FRMGestionRoles.cs">
       <SubType>Form</SubType>
@@ -94,11 +106,23 @@
     <Compile Include="FRMRegistrar.Designer.cs">
       <DependentUpon>FRMRegistrar.cs</DependentUpon>
     </Compile>
+    <Compile Include="FRMReservas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRMReservas.Designer.cs">
+      <DependentUpon>FRMReservas.cs</DependentUpon>
+    </Compile>
     <Compile Include="FRMUsuariosBloqueados.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FRMUsuariosBloqueados.Designer.cs">
       <DependentUpon>FRMUsuariosBloqueados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRMVerPaquetes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRMVerPaquetes.Designer.cs">
+      <DependentUpon>FRMVerPaquetes.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -117,11 +141,17 @@
     <EmbeddedResource Include="FRMBitacora.resx">
       <DependentUpon>FRMBitacora.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FRMCompletarPerfil.resx">
+      <DependentUpon>FRMCompletarPerfil.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FRMdv.resx">
       <DependentUpon>FRMdv.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FRMGestionIdiomas.resx">
       <DependentUpon>FRMGestionIdiomas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRMGestionPaquetes.resx">
+      <DependentUpon>FRMGestionPaquetes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FRMGestionRoles.resx">
       <DependentUpon>FRMGestionRoles.cs</DependentUpon>
@@ -138,8 +168,14 @@
     <EmbeddedResource Include="FRMRegistrar.resx">
       <DependentUpon>FRMRegistrar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FRMReservas.resx">
+      <DependentUpon>FRMReservas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FRMUsuariosBloqueados.resx">
       <DependentUpon>FRMUsuariosBloqueados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRMVerPaquetes.resx">
+      <DependentUpon>FRMVerPaquetes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InterfazGeneral.resx">
       <DependentUpon>InterfazGeneral.cs</DependentUpon>

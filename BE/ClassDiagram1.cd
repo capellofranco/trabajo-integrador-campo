@@ -70,6 +70,41 @@
       <FileName>USUARIO.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="BE.CLIENTE_PERFIL">
+    <Position X="9.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAACAAAAAAAAAAAABAAAEAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>CLIENTE_PERFIL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.SERVICIO">
+    <Position X="11.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAgAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SERVICIO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.PAQUETE">
+    <Position X="13.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQIIAAAAAQAEAAAAAEAAARAAAAAAAgAAAAAgAAAAA=</HashCode>
+      <FileName>PAQUETE.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.RESERVA">
+    <Position X="9.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIABAAQAAAAQAAAAAAAQAAAAACAAAAAAAAAAAAAAEAg=</HashCode>
+      <FileName>RESERVA.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.PAGO">
+    <Position X="11.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAIAAEAAAIAAAAAAAAIAAg=</HashCode>
+      <FileName>PAGO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="BE.Observer">
     <Position X="5.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
