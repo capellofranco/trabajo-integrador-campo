@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BLL;
+
 
 namespace trabajo_integrador
 {
@@ -17,13 +19,23 @@ namespace trabajo_integrador
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var dvBLL = new BLL.DV_BLL();
-            var errores = dvBLL.VerificarIntegridad();
+            try
+            {
+                BLL.InicializacionBLL.PrepararBaseDeDatos();
 
-            if (errores.Count > 0)
-                Application.Run(new Login(soloAdmin: true));
-            else
-                Application.Run(new Login(soloAdmin: false));
+                var dvBLL = new BLL.DV_BLL();
+                var errores = dvBLL.VerificarIntegridad();
+
+                if (errores != null && errores.Count > 0)
+                    Application.Run(new Login(soloAdmin: true));
+                else
+                    Application.Run(new Login(soloAdmin: false));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error crítico de inicialización: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

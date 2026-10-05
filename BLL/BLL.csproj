@@ -45,6 +45,7 @@
     <Compile Include="BITACORA_BLL.cs" />
     <Compile Include="CLIENTE_PERFIL_BLL.cs" />
     <Compile Include="DV_BLL.cs" />
+    <Compile Include="InicializacionBLL.cs" />
     <Compile Include="PAQUETE_BLL.cs" />
     <Compile Include="PERMISOMAP_BLL.cs" />
     <Compile Include="PRODUCTO_BLL.cs" />

@@ -18,10 +18,18 @@ namespace DAL
         private SqlConnection conexion;
         private SqlTransaction transaccion;
 
+        //public void Conectar()
+        //{
+        //    conexion = new SqlConnection();
+        //    conexion.ConnectionString = "initial catalog=TrabajoIntegrador; data source=DESKTOP-2T3QCEB\\SQLEXPRESS; integrated security=SSPI;";
+        //    conexion.Open();
+        //}
+
         public void Conectar()
         {
-            conexion = new SqlConnection();
-            conexion.ConnectionString = "initial catalog=TrabajoIntegrador; data source=DESKTOP-2T3QCEB\\SQLEXPRESS; integrated security=SSPI;";
+            string servidor = ServidorSql.Detectar();
+            conexion = new SqlConnection(
+                $"Data Source={servidor};Initial Catalog=TrabajoIntegrador;Integrated Security=SSPI;");
             conexion.Open();
         }
 
