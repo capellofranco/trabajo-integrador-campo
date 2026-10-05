@@ -32,10 +32,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnRegistrarPago = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbMetodoPago = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -74,10 +73,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnRegistrarPago);
             this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.cmbMetodoPago);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(12, 238);
@@ -88,25 +86,15 @@
             this.groupBox1.Text = "Registrar Pago";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // button2
+            // btnRegistrarPago
             // 
-            this.button2.Location = new System.Drawing.Point(444, 28);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(269, 37);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Confirmar reserva";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(444, 81);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(269, 37);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Registrar pago";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnRegistrarPago.Location = new System.Drawing.Point(439, 53);
+            this.btnRegistrarPago.Name = "btnRegistrarPago";
+            this.btnRegistrarPago.Size = new System.Drawing.Size(269, 37);
+            this.btnRegistrarPago.TabIndex = 4;
+            this.btnRegistrarPago.Text = "Registrar pago";
+            this.btnRegistrarPago.UseVisualStyleBackColor = true;
+            this.btnRegistrarPago.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
@@ -115,13 +103,13 @@
             this.textBox1.Size = new System.Drawing.Size(269, 22);
             this.textBox1.TabIndex = 3;
             // 
-            // comboBox1
+            // cmbMetodoPago
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(123, 83);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(269, 24);
-            this.comboBox1.TabIndex = 2;
+            this.cmbMetodoPago.FormattingEnabled = true;
+            this.cmbMetodoPago.Location = new System.Drawing.Point(123, 83);
+            this.cmbMetodoPago.Name = "cmbMetodoPago";
+            this.cmbMetodoPago.Size = new System.Drawing.Size(269, 24);
+            this.cmbMetodoPago.TabIndex = 2;
             // 
             // label4
             // 
@@ -167,10 +155,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRegistrarPago;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbMetodoPago;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
     }

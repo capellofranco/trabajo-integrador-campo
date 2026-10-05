@@ -48,6 +48,9 @@
             this.btnSalirInterfaz = new System.Windows.Forms.Button();
             this.cmbIdiomaGlobal = new System.Windows.Forms.ComboBox();
             this.lblCambiarIdiomaInterfaz = new System.Windows.Forms.Label();
+            this.solicitudesYReclamosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.misSolicitudesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionarSolicitudesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,7 +66,8 @@
             this.bloqueadosToolStripMenuItem,
             this.gestionRolesToolStripMenuItem,
             this.gestionIdiomaToolStripMenuItem,
-            this.paqueteDeViajesToolStripMenuItem});
+            this.paqueteDeViajesToolStripMenuItem,
+            this.solicitudesYReclamosToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
@@ -251,6 +255,33 @@
             this.lblCambiarIdiomaInterfaz.TabIndex = 12;
             this.lblCambiarIdiomaInterfaz.Text = "Cambiar de Idioma";
             // 
+            // solicitudesYReclamosToolStripMenuItem
+            // 
+            this.solicitudesYReclamosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.solicitudesYReclamosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.misSolicitudesToolStripMenuItem,
+            this.gestionarSolicitudesToolStripMenuItem});
+            this.solicitudesYReclamosToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.solicitudesYReclamosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.solicitudesYReclamosToolStripMenuItem.Name = "solicitudesYReclamosToolStripMenuItem";
+            this.solicitudesYReclamosToolStripMenuItem.Size = new System.Drawing.Size(195, 27);
+            this.solicitudesYReclamosToolStripMenuItem.Text = "Solicitudes y Reclamos";
+            this.solicitudesYReclamosToolStripMenuItem.Click += new System.EventHandler(this.solicitudesYReclamosToolStripMenuItem_Click);
+            // 
+            // misSolicitudesToolStripMenuItem
+            // 
+            this.misSolicitudesToolStripMenuItem.Name = "misSolicitudesToolStripMenuItem";
+            this.misSolicitudesToolStripMenuItem.Size = new System.Drawing.Size(253, 28);
+            this.misSolicitudesToolStripMenuItem.Text = "Mis Solicitudes";
+            this.misSolicitudesToolStripMenuItem.Click += new System.EventHandler(this.misSolicitudesToolStripMenuItem_Click);
+            // 
+            // gestionarSolicitudesToolStripMenuItem
+            // 
+            this.gestionarSolicitudesToolStripMenuItem.Name = "gestionarSolicitudesToolStripMenuItem";
+            this.gestionarSolicitudesToolStripMenuItem.Size = new System.Drawing.Size(253, 28);
+            this.gestionarSolicitudesToolStripMenuItem.Text = "Gestionar Solicitudes";
+            this.gestionarSolicitudesToolStripMenuItem.Click += new System.EventHandler(this.gestionarSolicitudesToolStripMenuItem_Click);
+            // 
             // InterfazGeneral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -299,5 +330,8 @@
         private System.Windows.Forms.ToolStripMenuItem gestionPaquetesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem misPaquetesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionReservaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem solicitudesYReclamosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem misSolicitudesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestionarSolicitudesToolStripMenuItem;
     }
 }

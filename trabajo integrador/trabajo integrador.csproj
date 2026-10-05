@@ -82,6 +82,12 @@
     <Compile Include="FRMGestionRoles.Designer.cs">
       <DependentUpon>FRMGestionRoles.cs</DependentUpon>
     </Compile>
+    <Compile Include="FRMGestionSolicitudes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRMGestionSolicitudes.Designer.cs">
+      <DependentUpon>FRMGestionSolicitudes.cs</DependentUpon>
+    </Compile>
     <Compile Include="FRMHistorico.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +117,12 @@
     </Compile>
     <Compile Include="FRMReservas.Designer.cs">
       <DependentUpon>FRMReservas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRMSolicitudes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRMSolicitudes.Designer.cs">
+      <DependentUpon>FRMSolicitudes.cs</DependentUpon>
     </Compile>
     <Compile Include="FRMUsuariosBloqueados.cs">
       <SubType>Form</SubType>
@@ -156,6 +168,9 @@
     <EmbeddedResource Include="FRMGestionRoles.resx">
       <DependentUpon>FRMGestionRoles.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FRMGestionSolicitudes.resx">
+      <DependentUpon>FRMGestionSolicitudes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FRMHistorico.resx">
       <DependentUpon>FRMHistorico.cs</DependentUpon>
     </EmbeddedResource>
@@ -170,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FRMReservas.resx">
       <DependentUpon>FRMReservas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRMSolicitudes.resx">
+      <DependentUpon>FRMSolicitudes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FRMUsuariosBloqueados.resx">
       <DependentUpon>FRMUsuariosBloqueados.cs</DependentUpon>

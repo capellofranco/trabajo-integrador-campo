@@ -1,119 +1,126 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="BE.BITACORA">
-    <Position X="8" Y="2" Width="1.5" />
+  <Class Name="BE.BITACORA" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAQAAAAAAAAAAAIAIAAAAIAAAAAAAIAACAAAAAQ=</HashCode>
       <FileName>BITACORA.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BE.ComponenteAcceso">
+  <Class Name="BE.CLIENTE_PERFIL" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAACAAAAAAAAAAAABAAAEAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>CLIENTE_PERFIL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.ComponenteAcceso" Collapsed="true">
     <Position X="1.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAgAABAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ComponenteAcceso.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BE.DIGITO_VERIFICADOR_VERTICAL">
-    <Position X="0.5" Y="5.25" Width="1.5" />
+  <Class Name="BE.DIGITO_VERIFICADOR_VERTICAL" Collapsed="true">
+    <Position X="8.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAQAgAAAAIAA=</HashCode>
       <FileName>DIGITO_VERIFICADOR_VERTICAL.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BE.HistoricoPrecio">
-    <Position X="9.75" Y="0.5" Width="1.5" />
+  <Class Name="BE.HistoricoPrecio" Collapsed="true">
+    <Position X="10.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAACQAAAAAgAAAAAAAAAAQAAAAAAAAAIAAAACAAAA=</HashCode>
       <FileName>HistoricoPrecio.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BE.IDIOMA">
-    <Position X="8" Y="0.5" Width="1.5" />
+  <Class Name="BE.IDIOMA" Collapsed="true">
+    <Position X="5.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IDIOMA.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BE.PERMISO">
-    <Position X="2.75" Y="3" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
-      <FileName>PERMISO.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="BE.PRODUCTO">
-    <Position X="6.25" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AEAAAAAAAAAAgAAAAAAAgAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
-      <FileName>PRODUCTO.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="BE.ROL">
-    <Position X="0.5" Y="3" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAIAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ROL.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="BE.TRADUCCION">
-    <Position X="6.25" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAgAAAAAAAAEAAQAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>TRADUCCION.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="BE.USUARIO">
-    <Position X="4.5" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AQACAAAAAAAAgAQAAYAAAAEgCAAAAAACAQAAAgAAAgA=</HashCode>
-      <FileName>USUARIO.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="BE.CLIENTE_PERFIL">
-    <Position X="9.75" Y="3" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAQAACAAAAAAAAAAAABAAAEAAAAAAAAAAgAAAAA=</HashCode>
-      <FileName>CLIENTE_PERFIL.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="BE.SERVICIO">
-    <Position X="11.5" Y="3" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AgAAAAAAAAAAAAAAAAAAgAABAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>SERVICIO.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="BE.PAQUETE">
-    <Position X="13.25" Y="3" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAQIIAAAAAQAEAAAAAEAAARAAAAAAAgAAAAAgAAAAA=</HashCode>
-      <FileName>PAQUETE.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="BE.RESERVA">
-    <Position X="9.75" Y="5.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIABAAQAAAAQAAAAAAAQAAAAACAAAAAAAAAAAAAAEAg=</HashCode>
-      <FileName>RESERVA.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="BE.PAGO">
-    <Position X="11.5" Y="5.25" Width="1.5" />
+  <Class Name="BE.PAGO" Collapsed="true">
+    <Position X="7" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAAAAAIAAEAAAIAAAAAAAAIAAg=</HashCode>
       <FileName>PAGO.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="BE.Observer">
-    <Position X="5.25" Y="4.5" Width="1.5" />
+  <Class Name="BE.PAQUETE" Collapsed="true">
+    <Position X="8.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQIIAAAAAQAEAAAAAEAAARAAAAAAAgAAAAAgAAAAA=</HashCode>
+      <FileName>PAQUETE.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.PERMISO" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>PERMISO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.PRODUCTO" Collapsed="true">
+    <Position X="10.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAgAAAAAAAgAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>PRODUCTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.RESERVA" Collapsed="true">
+    <Position X="5.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIABAAQAAAAQAAAAAAAQAAAAACAAAAAAAAAAAAAAEAg=</HashCode>
+      <FileName>RESERVA.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.ROL" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ROL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.SERVICIO" Collapsed="true">
+    <Position X="7" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAgAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SERVICIO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.TRADUCCION" Collapsed="true">
+    <Position X="8.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAEAAQAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TRADUCCION.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.USUARIO" Collapsed="true">
+    <Position X="10.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACAAAAAAAAgAQAAYAAAAEgCAAAAAACAQAAAgAAAgA=</HashCode>
+      <FileName>USUARIO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.SOLICITUD">
+    <Position X="3" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAQAIAAgAAAAACAQAAABIAQAAAAAAAAAAAAAEA4=</HashCode>
+      <FileName>SOLICITUD.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="BE.Observer" Collapsed="true">
+    <Position X="5.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
       <FileName>Observer.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="BE.Subject">
-    <Position X="7.25" Y="4.5" Width="1.5" />
+  <Interface Name="BE.Subject" Collapsed="true">
+    <Position X="7" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAQAAQAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
       <FileName>Subject.cs</FileName>

@@ -117,6 +117,18 @@ namespace trabajo_integrador
                     return usuarioToolStripMenuItem_Click;
                 case "productoToolStripMenuItem1_Click":
                     return productoToolStripMenuItem1_Click;
+                case "misSolicitudesToolStripMenuItem_Click":
+                    return misSolicitudesToolStripMenuItem_Click;
+                case "gestionarSolicitudesToolStripMenuItem_Click":
+                    return gestionarSolicitudesToolStripMenuItem_Click;
+                case "verPaquetesToolStripMenuItem_Click":
+                    return verPaquetesToolStripMenuItem_Click;
+                case "gestionPaquetesToolStripMenuItem_Click":
+                    return gestionPaquetesToolStripMenuItem_Click;
+                case "misPaquetesToolStripMenuItem_Click":
+                    return misPaquetesToolStripMenuItem_Click;
+                case "gestionReservaToolStripMenuItem_Click":
+                    return gestionReservaToolStripMenuItem_Click;
                 default:
                     return null;
             }
@@ -290,6 +302,23 @@ namespace trabajo_integrador
         }
 
         private void paqueteDeViajesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void misSolicitudesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FRMSolicitudes frm = new FRMSolicitudes();
+            frm.ShowDialog();
+        }
+
+        private void gestionarSolicitudesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FRMGestionSolicitudes frm = new FRMGestionSolicitudes();
+            frm.ShowDialog();
+        }
+
+        private void solicitudesYReclamosToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }

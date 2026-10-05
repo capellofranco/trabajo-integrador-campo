@@ -22,6 +22,8 @@ namespace trabajo_integrador
 
         private void FRMGestionPaquetes_Load(object sender, EventArgs e)
         {
+            textBox5.ReadOnly = true;
+            textBox5.BackColor = System.Drawing.SystemColors.Control;
             CargarPaquetes();
             CargarServicios();
         }
@@ -56,9 +58,9 @@ namespace trabajo_integrador
             textBox2.Text = fila.Cells["Descripcion"].Value.ToString();
             dateTimePicker1.Value = Convert.ToDateTime(fila.Cells["FechaSalida"].Value);
             dateTimePicker2.Value = Convert.ToDateTime(fila.Cells["FechaRegreso"].Value);
-            textBox3.Text = fila.Cells["DuracionDias"].Value.ToString();
+            textBox5.Text = fila.Cells["DuracionDias"].Value.ToString();
             textBox4.Text = fila.Cells["Precio"].Value.ToString();
-            textBox5.Text = fila.Cells["CuposTotal"].Value.ToString();
+            textBox3.Text = fila.Cells["CuposTotal"].Value.ToString();
 
             var serviciosPaquete = _paqueteBLL.ListarServiciosDePaquete(_idPaqueteSeleccionado);
             for (int i = 0; i < checkedListBox1.Items.Count; i++)
@@ -83,12 +85,12 @@ namespace trabajo_integrador
                 MessageBox.Show("El precio debe ser un número mayor a cero.");
                 return;
             }
-            if (!int.TryParse(textBox5.Text, out int cupos) || cupos <= 0)
+            if (!int.TryParse(textBox3.Text, out int cupos) || cupos <= 0)
             {
                 MessageBox.Show("Los cupos deben ser un número mayor a cero.");
                 return;
             }
-            if (!int.TryParse(textBox3.Text, out int duracion) || duracion <= 0)
+            if (!int.TryParse(textBox5.Text, out int duracion) || duracion <= 0)
             {
                 MessageBox.Show("La duración debe ser un número mayor a cero.");
                 return;
@@ -243,6 +245,31 @@ namespace trabajo_integrador
             dateTimePicker2.Value = DateTime.Now;
             for (int i = 0; i < checkedListBox1.Items.Count; i++)
                 checkedListBox1.SetItemChecked(i, false);
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            CalcularDuracion();
+
+        }
+
+        private void CalcularDuracion()
+        {
+            if (dateTimePicker2.Value > dateTimePicker1.Value)
+            {
+                int dias = (dateTimePicker2.Value - dateTimePicker1.Value).Days;
+                textBox5.Text = dias.ToString();
+            }
+            else
+            {
+                textBox5.Text = "";
+            }
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            CalcularDuracion();
+
         }
     }
 }

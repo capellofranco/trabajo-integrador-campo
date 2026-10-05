@@ -32,6 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=10.0.0.12, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.10.0.12\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -53,6 +57,7 @@
     <Compile Include="MP_RESERVA.cs" />
     <Compile Include="MP_ROL.cs" />
     <Compile Include="MP_SERVICIO.cs" />
+    <Compile Include="MP_SOLICITUD.cs" />
     <Compile Include="MP_TRADUCCION.cs" />
     <Compile Include="MP_USUARIO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

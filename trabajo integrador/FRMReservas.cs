@@ -38,13 +38,19 @@ namespace trabajo_integrador
             _idUsuario = usuBLL.ObtenerIdUsuarioActivo();
             _esAdmin = usuBLL.UsuarioTienePermiso("GestionarReservas");
 
-            comboBox1.Items.Clear();
-            comboBox1.Items.Add("Efectivo");
-            comboBox1.Items.Add("Tarjeta de crédito");
-            comboBox1.Items.Add("Tarjeta de débito");
-            comboBox1.Items.Add("Transferencia");
 
-            button2.Visible = _esAdmin;
+
+            cmbMetodoPago.Items.Clear();
+            cmbMetodoPago.Items.Add("Efectivo");
+            cmbMetodoPago.Items.Add("Tarjeta de crédito");
+            cmbMetodoPago.Items.Add("Tarjeta de débito");
+            cmbMetodoPago.Items.Add("Transferencia");
+
+            textBox1.ReadOnly = true;
+            textBox1.BackColor = System.Drawing.SystemColors.Control;
+
+            //groupBox1.Visible = !_esAdmin;
+
             CargarReservas();
         }
 
@@ -63,26 +69,31 @@ namespace trabajo_integrador
                 dataGridView1.Columns["IdPaquete"].Visible = false;
 
             label1.Text = "";
-            button1.Enabled = false;
-            button2.Enabled = false;
-            
+            //btnRegistrarPago.Enabled = false;
+
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
+
             var fila = dataGridView1.Rows[e.RowIndex];
             int idReserva = (int)fila.Cells["IdReserva"].Value;
             string estado = fila.Cells["Estado"].Value.ToString();
 
+            decimal importe = Convert.ToDecimal(fila.Cells["ImporteTotal"].Value);
+            textBox1.Text = importe.ToString();
+            textBox1.ReadOnly = true;
+            textBox1.BackColor = System.Drawing.SystemColors.Control;
+
             var pago = _reservaBLL.ObtenerPago(idReserva);
+
             label1.Text = pago != null
                 ? $"Pago: ${pago.Monto} | {pago.MetodoPago} | {pago.Estado}"
                 : "Sin pago registrado.";
 
-            button1.Enabled = !_esAdmin && estado == "Pendiente" && pago == null;
-            button2.Enabled = _esAdmin && estado == "Pendiente" && pago != null;
-           
+            btnRegistrarPago.Enabled = estado == "Pendiente" && pago == null;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -97,7 +108,7 @@ namespace trabajo_integrador
                 MessageBox.Show("El monto debe ser un número mayor a cero.");
                 return;
             }
-            if (comboBox1.SelectedItem == null)
+            if (cmbMetodoPago.SelectedItem == null)
             {
                 MessageBox.Show("Seleccioná un método de pago.");
                 return;
@@ -106,9 +117,12 @@ namespace trabajo_integrador
             try
             {
                 int idReserva = (int)dataGridView1.CurrentRow.Cells["IdReserva"].Value;
-                string metodo = comboBox1.SelectedItem.ToString();
+                string metodo = cmbMetodoPago.SelectedItem.ToString();
+
                 _reservaBLL.RegistrarPago(idReserva, monto, metodo);
-                MessageBox.Show("Pago registrado correctamente.");
+                _reservaBLL.ConfirmarReserva(idReserva);
+
+                MessageBox.Show("Pago registrado y reserva confirmada correctamente.");
                 textBox1.Clear();
                 CargarReservas();
             }
@@ -118,26 +132,7 @@ namespace trabajo_integrador
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.CurrentRow == null)
-            {
-                MessageBox.Show("Seleccioná una reserva.");
-                return;
-            }
-
-            try
-            {
-                int idReserva = (int)dataGridView1.CurrentRow.Cells["IdReserva"].Value;
-                _reservaBLL.ConfirmarReserva(idReserva);
-                MessageBox.Show("Reserva confirmada correctamente.");
-                CargarReservas();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
+        
 
         
     }

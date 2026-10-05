@@ -38,12 +38,19 @@ namespace BLL
                     }
                 },
                 {
-                    "paqueteDeViajesToolStripMenuItem_Click", new List<(string, string, string)>
+                    "paqueteDeViajesToolStripMenuItem", new List<(string, string, string)>
                     {
                         ("VerPaquetes",       "Ver Paquetes",      "verPaquetesToolStripMenuItem_Click"),
                         ("GestionarPaquetes", "Gestion Paquetes",  "gestionPaquetesToolStripMenuItem_Click"),
                         ("RealizarReserva",   "Mis Reservas",      "misPaquetesToolStripMenuItem_Click"),
                         ("GestionarReservas", "Gestion Reservas",  "gestionReservaToolStripMenuItem_Click")
+                    }
+                },
+                {
+                    "solicitudesYReclamosToolStripMenuItem", new List<(string, string, string)>
+                    {
+                        ("RegistrarSolicitud",   "Solicitud del cliente",  "misSolicitudesToolStripMenuItem_Click"),
+                        ("GestionarSolicitudes", "Gestionar solicitud",   "gestionarSolicitudesToolStripMenuItem_Click")
                     }
                 }
             };
